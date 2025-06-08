@@ -11,7 +11,7 @@ public class Problem3 extends BaseClass {
         // Only make edits between the designated "Start" and "End" comments
         printArrayInfo(arr, arrayNumber);
 
-        // UCID: mt85 | Date: 06/08/2025
+        // UCID: mi348 | Date: 06/08/2025
         // Step 1: Loop through each item in the array
         // Step 2: Use instanceof to check the object's type
         // Step 3: Convert each value to its absolute value
