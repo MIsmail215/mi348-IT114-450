@@ -16,25 +16,29 @@ public class Problem2 extends BaseClass {
         // Challenge 2: Have the sum be represented as a number with exactly 2 decimal places, assign to `modifiedTotal`
         // Example: 0.1 would be shown as 0.10, 1 would be shown as 1.00, etc
         // Step 1: sketch out plan using comments (include ucid and date)
-        // Step 2: Add/commit your outline of comments (required for full credit)
-        // Step 3: Add code to solve the problem (add/commit as needed)
-        double total = 0;
-        // Start Solution Edits
-        // Solve Challenge 1 here
-        
-      
-        // Solve Challenge 2 here
-        Object modifiedTotal = "?";
+        // UCID: mi348, Date: 06/08/2025
+        // Plan:
+        // - Loop through the array to calculate the sum and store it in `total`
+        // - Format the sum to 2 decimal places using String.format
 
+        double total = 0;
+
+        // Start Solution Edits
+        for (double value : arr) {
+            total += value;
+        }
+
+        String modifiedTotal = String.format("%.2f", total);
         // End Solution Edits
-        System.out.println("Total Raw Value: " +total);
+
+        System.out.println("Total Raw Value: " + total);
         System.out.println("Total Modified Value: " + modifiedTotal);
         System.out.println("");
         System.out.println("______________________________________");
     }
 
     public static void main(String[] args) {
-        final String ucid = "mt85"; // <-- change to your UCID
+        final String ucid = "mi348"; // <-- change to your UCID
         // no edits below this line
         printHeader(ucid, 2);
         sumValues(array1, 1);
@@ -43,6 +47,5 @@ public class Problem2 extends BaseClass {
         sumValues(array4, 4);
         sumValues(array5, 5);
         printFooter(ucid, 2);
-
     }
 }
