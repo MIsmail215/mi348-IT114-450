@@ -21,28 +21,65 @@ public class Problem4 extends BaseClass {
         // Challenge 4 (extra credit): Extract middle 3 characters (beginning starts at middle of phrase),
         // assign to 'placeholderForMiddleCharacters'
         // if not enough characters assign "Not enough characters"
- 
+
         // Step 1: sketch out plan using comments (include ucid and date)
-        // Step 2: Add/commit your outline of comments (required for full credit)
-        // Step 3: Add code to solve the problem (add/commit as needed)
-        String placeholderForModifiedPhrase = "";
-        String placeholderForMiddleCharacters = "";
-        
-        for(int i = 0; i <arr.length; i++){
-            // Start Solution Edits
-            
-             // End Solution Edits
-            System.out.println(String.format("Index[%d] \"%s\" | Middle: \"%s\"",i, placeholderForModifiedPhrase, placeholderForMiddleCharacters));
+        // UCID: mi348 | Date: 06/08/2025
+        // Plan:
+        // 1. Loop through each string.
+        // 2. Remove non-alphanumeric characters using regex (except spaces).
+        // 3. Trim and replace multiple spaces with one.
+        // 4. Convert each word to title case (capitalize first letter).
+        // 5. Assign cleaned result to `placeholderForModifiedPhrase`.
+        // 6. Get middle 3 characters from modified phrase, if length >= 3.
+        //    - Start from middle index (length / 2 - 1).
+        //    - Else assign "Not enough characters".
+
+        for(int i = 0; i < arr.length; i++){
+            String str = arr[i];
+
+            // Remove non-alphanumeric characters except space
+            str = str.replaceAll("[^a-zA-Z0-9 ]", "");
+
+            // Trim and remove extra spaces
+            str = str.trim().replaceAll(" +", " ");
+
+            // Convert to Title Case
+            String[] words = str.split(" ");
+            StringBuilder sb = new StringBuilder();
+            for (String word : words) {
+                if (word.length() > 0) {
+                    sb.append(Character.toUpperCase(word.charAt(0)));
+                    if (word.length() > 1) {
+                        sb.append(word.substring(1).toLowerCase());
+                    }
+                    sb.append(" ");
+                }
+            }
+            String placeholderForModifiedPhrase = sb.toString().trim();
+
+            // Middle 3 characters extraction (extra credit)
+            String placeholderForMiddleCharacters;
+            int len = placeholderForModifiedPhrase.length();
+            if (len >= 3) {
+                int mid = len / 2;
+                if (len % 2 == 0) mid--;
+                if (mid - 1 >= 0 && mid + 2 <= len)
+                    placeholderForMiddleCharacters = placeholderForModifiedPhrase.substring(mid - 1, mid + 2);
+                else
+                    placeholderForMiddleCharacters = "Not enough characters";
+            } else {
+                placeholderForMiddleCharacters = "Not enough characters";
+            }
+
+            // Output results
+            System.out.println(String.format("Index[%d] \"%s\" | Middle: \"%s\"", i, placeholderForModifiedPhrase, placeholderForMiddleCharacters));
         }
 
-       
-
-        
         System.out.println("\n______________________________________");
     }
 
     public static void main(String[] args) {
-        final String ucid = "mt85"; // <-- change to your UCID
+        final String ucid = "mi348"; // <-- change to your UCID
         // No edits below this line
         printHeader(ucid, 4);
 
@@ -52,5 +89,4 @@ public class Problem4 extends BaseClass {
         transformText(array4, 4);
         printFooter(ucid, 4);
     }
-
 }
