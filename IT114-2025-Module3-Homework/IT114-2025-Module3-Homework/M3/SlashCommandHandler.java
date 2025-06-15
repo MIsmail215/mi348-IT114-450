@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class SlashCommandHandler extends BaseClass {
     private static String ucid = "mi348"; // <-- change to your UCID if needed
+    //UCID Mi348, Date: 6/15/2025
 
     public static void main(String[] args) {
         printHeader(ucid, 2, "Objective: Implement a simple slash command parser.");
@@ -87,3 +88,6 @@ public class SlashCommandHandler extends BaseClass {
         scanner.close();
     }
 }
+
+
+

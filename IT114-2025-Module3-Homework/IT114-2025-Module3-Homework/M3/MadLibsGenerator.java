@@ -1,25 +1,13 @@
 package M3;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-/*
-Challenge 3: Mad Libs Generator (Randomized Stories)
------------------------------------------------------
-- Load a **random** story from the "stories" folder
-- Extract **each line** into a collection (i.e., ArrayList)
-- Prompts user for each placeholder (i.e., <adjective>) 
-    - Any word the user types is acceptable, no need to verify if it matches the placeholder type
-    - Any placeholder with underscores should display with spaces instead
-- Replace placeholders with user input (assign back to original slot in collection)
-*/
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class MadLibsGenerator extends BaseClass {
-    private static final String STORIES_FOLDER = "M3/stories";
-    private static String ucid = "mt85"; // <-- change to your ucid
-
+    private static final String STORIES_FOLDER = "C:\\Users\\Valery\\NJIT\\Summer2025\\IT114\\mi348-IT114-450\\IT114-2025-Module3-Homework\\IT114-2025-Module3-Homework\\M3\\stories";
+    private static String ucid = "mi348"; // <-- change to your ucid
+//UCID Mi348---Date 6/15/2025
     public static void main(String[] args) {
         printHeader(ucid, 3,
                 "Objective: Implement a Mad Libs generator that replaces placeholders dynamically.");
@@ -33,27 +21,52 @@ public class MadLibsGenerator extends BaseClass {
             scanner.close();
             return;
         }
+
+        // 🟡 Step 1: Load a random story file
+        File[] storyFiles = folder.listFiles();
+        File storyFile = storyFiles[new Random().nextInt(storyFiles.length)];
+
         List<String> lines = new ArrayList<>();
-        // Start edits
 
-        // load a random story file
-
-        // parse the story lines
-
-        // iterate through the lines
-
-        // prompt the user for each placeholder (note: there may be more than one
-        // placeholder in a line)
-
-        // apply the update to the same collection slot
-
-        // End edits
-        System.out.println("\nYour Completed Mad Libs Story:\n");
-        StringBuilder finalStory = new StringBuilder();
-        for (String line : lines) {
-            finalStory.append(line).append("\n");
+        try {
+            Scanner fileScanner = new Scanner(storyFile);
+            // 🟡 Step 2: Read each line into the ArrayList
+            while (fileScanner.hasNextLine()) {
+                lines.add(fileScanner.nextLine());
+            }
+            fileScanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error reading story file.");
+            printFooter(ucid, 3);
+            scanner.close();
+            return;
         }
-        System.out.println(finalStory.toString());
+
+        // 🟡 Step 3: Prompt user for each placeholder
+        for (int i = 0; i < lines.size(); i++) {
+            String line = lines.get(i);
+            while (line.contains("<") && line.contains(">")) {
+                int start = line.indexOf("<");
+                int end = line.indexOf(">", start);
+
+                if (start >= 0 && end > start) {
+                    String placeholder = line.substring(start, end + 1);
+                    String prompt = placeholder.substring(1, placeholder.length() - 1).replace("_", " ");
+                    System.out.print("Enter a(n) " + prompt + ": ");
+                    String userInput = scanner.nextLine();
+                    line = line.replaceFirst("<[^>]+>", userInput);
+                } else {
+                    break;
+                }
+            }
+            lines.set(i, line); // 🟡 Step 4: Replace in the original slot
+        }
+
+        // 🟢 Output the final story
+        System.out.println("\nYour Completed Mad Libs Story:\n");
+        for (String line : lines) {
+            System.out.println(line);
+        }
 
         printFooter(ucid, 3);
         scanner.close();
