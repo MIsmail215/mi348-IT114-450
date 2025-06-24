@@ -1,4 +1,4 @@
-package M4.Part3;
+package M4.Part3.Part3HW;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import M4.Part3.TextFX.Color;
+import M4.Part3HW.TextFX.Color;
 
 /**
  * A server-side representation of a single client

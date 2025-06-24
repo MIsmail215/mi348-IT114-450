@@ -1,42 +1,47 @@
+// UCID mi348 6/23/25
+
 package M4.Part1;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Server {
     private int port = 3000;
+    private final List<ServerThread> clients = Collections.synchronizedList(new ArrayList<>());
+
+    public void relay(String from, String message) {
+        synchronized (clients) {
+            for (ServerThread client : clients) {
+                client.sendMessage(from + ": " + message);
+            }
+        }
+    }
+
+    public void flipCoin(String senderName) {
+        String result = Math.random() < 0.5 ? "Heads" : "Tails";
+        relay("Server", senderName + " flipped a coin and got " + result);
+    }
 
     private void start(int port) {
         this.port = port;
         System.out.println("Listening on port " + this.port);
-        // server listening
-        try (ServerSocket serverSocket = new ServerSocket(port);
-                // client wait
-                Socket client = serverSocket.accept(); // blocking;
-
-                // read from client
-                BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));) {
-
-            System.out.println("Client connected, waiting for message");
-            String fromClient = "";
-            while ((fromClient = in.readLine()) != null) {
-                if ("/kill server".equalsIgnoreCase(fromClient)) {
-                    // normally you wouldn't have a remote kill command, this is just for example
-                    // sake
-                    System.out.println("Client killed server");
-                    break;
-                } else {
-                    System.out.println("From client: " + fromClient);
-                }
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            while (true) {
+                Socket client = serverSocket.accept();
+                ServerThread thread = new ServerThread(client, this);
+                clients.add(thread);
+                new Thread(thread).start();
+                System.out.println("Client connected");
             }
         } catch (IOException e) {
             System.out.println("Exception from start()");
             e.printStackTrace();
         } finally {
-            System.out.println("closing server socket");
+            System.out.println("Server shutting down.");
         }
     }
 
@@ -47,10 +52,8 @@ public class Server {
         try {
             port = Integer.parseInt(args[0]);
         } catch (Exception e) {
-            // can ignore, will either be index out of bounds or type mismatch
-            // will default to the defined value prior to the try/catch
+            // use default
         }
         server.start(port);
-        System.out.println("Server Stopped");
     }
 }
