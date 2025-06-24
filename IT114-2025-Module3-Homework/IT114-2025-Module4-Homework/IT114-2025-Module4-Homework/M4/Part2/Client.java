@@ -94,6 +94,7 @@ public class Client {
      * @param text
      * @return true if a text was a command or triggered a command
      */
+    //MI348 6/23/2025
     private boolean processClientCommand(String text) {
         if (isConnection(text)) {
             // replaces multiple spaces with single space

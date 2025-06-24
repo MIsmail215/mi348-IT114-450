@@ -1,70 +1,63 @@
+// UCID mi348 6/23/25
 package M4.Part2;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Server {
     private int port = 3000;
+    private Map<Integer, ServerThread> clients = new ConcurrentHashMap<>();
+    private int clientIdCounter = 1;
+
+    public synchronized int addClient(ServerThread client) {
+        int id = clientIdCounter++;
+        clients.put(id, client);
+        return id;
+    }
+
+    public void removeClient(int id) {
+        clients.remove(id);
+    }
+
+    public void pm(int fromId, int toId, String message) {
+        ServerThread sender = clients.get(fromId);
+        ServerThread receiver = clients.get(toId);
+        if (receiver != null && sender != null) {
+            String formatted = "PM from " + sender.getClientName() + ": " + message;
+            receiver.sendMessage("Server: " + formatted);
+            sender.sendMessage("Server: " + formatted);
+        } else if (sender != null) {
+            sender.sendMessage("Server: PM failed. User ID not found.");
+        }
+    }
 
     private void start(int port) {
         this.port = port;
         System.out.println("Listening on port " + this.port);
-        // server listening
-        try (ServerSocket serverSocket = new ServerSocket(port);
-                // client wait
-                Socket client = serverSocket.accept(); // blocking;
-                // send to client
-                PrintWriter out = new PrintWriter(client.getOutputStream(), true);
-                // read from client
-                BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));) {
-
-            System.out.println("Client connected, waiting for message");
-            String fromClient = "";
-            while ((fromClient = in.readLine()) != null) {
-                System.out.println("From client: " + fromClient);
-                if ("/kill server".equalsIgnoreCase(fromClient)) {
-                    // normally you wouldn't have a remote kill command, this is just for example
-                    // sake
-                    System.out.println("Client killed server");
-                    break;
-                } else if (fromClient.startsWith("/reverse")) {
-                    // another example of server-side command
-                    // Note: In the future command format processing will be client-side
-                    // then client will send just the necessary data to the server so the server
-                    // doesn't need to do as much string processing
-                    StringBuilder sb = new StringBuilder(fromClient.replace("/reverse ", ""));
-                    sb.reverse();
-                    String rev = sb.toString();
-                    System.out.println("To client: " + rev);
-                    out.println(rev);
-                } else {
-                    System.out.println("To client: " + fromClient);
-                    out.println(fromClient);
-                }
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                ServerThread clientThread = new ServerThread(clientSocket, this);
+                int id = addClient(clientThread);
+                clientThread.setClientId(id);
+                new Thread(clientThread).start();
+                System.out.println("Client " + id + " connected.");
             }
         } catch (IOException e) {
             System.out.println("Exception from start()");
             e.printStackTrace();
-        } finally {
-            System.out.println("closing server socket");
         }
     }
 
     public static void main(String[] args) {
-        System.out.println("Server Starting");
         Server server = new Server();
         int port = 3000;
         try {
             port = Integer.parseInt(args[0]);
-        } catch (Exception e) {
-            // can ignore, will either be index out of bounds or type mismatch
-            // will default to the defined value prior to the try/catch
-        }
+        } catch (Exception e) {}
         server.start(port);
-        System.out.println("Server Stopped");
     }
 }
