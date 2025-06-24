@@ -35,6 +35,7 @@ public class ServerThread implements Runnable {
             out.println("Enter your name:");
             clientName = in.readLine();
             out.println("Welcome, " + clientName);
+//MI348 6/23/2025
 
             String input;
             while ((input = in.readLine()) != null) {

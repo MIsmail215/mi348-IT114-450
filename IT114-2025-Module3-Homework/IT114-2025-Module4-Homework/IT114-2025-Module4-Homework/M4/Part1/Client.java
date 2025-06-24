@@ -59,7 +59,7 @@ public class Client {
         Matcher localhostMatcher = localhostPattern.matcher(text);
         return ipMatcher.matches() || localhostMatcher.matches();
     }
-
+//MI348 6/23/2025
     private boolean processClientCommand(String text, Scanner si) {
         if (isConnection(text)) {
             String[] parts = text.trim().replaceAll(" +", " ").split(" ")[1].split(":");

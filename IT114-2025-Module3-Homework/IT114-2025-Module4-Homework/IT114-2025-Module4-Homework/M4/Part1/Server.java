@@ -12,7 +12,7 @@ import java.util.List;
 public class Server {
     private int port = 3000;
     private final List<ServerThread> clients = Collections.synchronizedList(new ArrayList<>());
-
+//MI348 6/23/2025
     public void relay(String from, String message) {
         synchronized (clients) {
             for (ServerThread client : clients) {
