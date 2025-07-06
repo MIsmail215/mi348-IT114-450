@@ -1,0 +1,179 @@
+07/06/2025 13:19:58 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+07/06/2025 13:19:58 [Project.Client.Client] ([32mINFO[0m):
+> Client starting
+07/06/2025 13:19:58 [Project.Client.Client] ([32mINFO[0m):
+> Waiting for input
+07/06/2025 13:20:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to Mukaddis[0m
+07/06/2025 13:20:47 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+07/06/2025 13:20:47 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mConnected[0m
+07/06/2025 13:20:47 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] You joined the room[0m
+07/06/2025 13:23:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] You left the room[0m
+07/06/2025 13:23:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Test] You joined the room[0m
+07/06/2025 13:24:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Test] Caden#2 joined the room[0m
+07/06/2025 13:25:17 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped
+07/06/2025 13:25:17 [Project.Client.Client] ([32mINFO[0m):
+> listenToServer thread stopped
+07/06/2025 13:31:24 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+07/06/2025 13:31:24 [Project.Client.Client] ([32mINFO[0m):
+> Client starting
+07/06/2025 13:31:24 [Project.Client.Client] ([32mINFO[0m):
+> Waiting for input
+07/06/2025 13:31:35 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to Mukaddis[0m
+07/06/2025 13:31:43 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+07/06/2025 13:31:43 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mConnected[0m
+07/06/2025 13:31:43 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] You joined the room[0m
+07/06/2025 13:32:13 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] JAMES#2 joined the room[0m
+07/06/2025 13:32:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] Tobi#3 joined the room[0m
+07/06/2025 13:48:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mTobi#3: /create Friends[0m
+07/06/2025 13:48:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] Tobi#3 left the room[0m
+07/06/2025 13:49:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] JAMES#2 left the room[0m
+07/06/2025 14:05:23 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped
+07/06/2025 14:05:23 [Project.Client.Client] ([32mINFO[0m):
+> listenToServer thread stopped
+07/06/2025 14:05:33 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+07/06/2025 14:05:33 [Project.Client.Client] ([32mINFO[0m):
+> Client starting
+07/06/2025 14:05:33 [Project.Client.Client] ([32mINFO[0m):
+> Waiting for input
+07/06/2025 14:05:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to Mukaddis[0m
+07/06/2025 14:05:51 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+07/06/2025 14:05:51 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mConnected[0m
+07/06/2025 14:05:51 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] You joined the room[0m
+07/06/2025 14:06:34 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] Robert#2 joined the room[0m
+07/06/2025 14:06:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] Johnathan#3 joined the room[0m
+07/06/2025 14:19:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mJohnathan#3: /listroom[0m
+07/06/2025 14:19:41 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] Johnathan#3 left the room[0m
+07/06/2025 14:19:50 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] Robert#2 left the room[0m
+07/06/2025 14:30:54 [Project.Client.Client] ([32mINFO[0m):
+> [0;35mRoom Results:[0m
+07/06/2025 14:30:54 [Project.Client.Client] ([32mINFO[0m):
+> FriendlyFriends
+lobby
+07/06/2025 14:30:55 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mMukaddis#1: hello[0m
+07/06/2025 14:53:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mMukaddis#1: [0m
+07/06/2025 14:53:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mMukaddis#1: [0m
+07/06/2025 14:53:28 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped
+07/06/2025 14:53:28 [Project.Client.Client] ([32mINFO[0m):
+> listenToServer thread stopped
+07/06/2025 15:05:15 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+07/06/2025 15:05:15 [Project.Client.Client] ([32mINFO[0m):
+> Client starting
+07/06/2025 15:05:15 [Project.Client.Client] ([32mINFO[0m):
+> Waiting for input
+07/06/2025 15:05:20 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to Mukaddis[0m
+07/06/2025 15:05:24 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+07/06/2025 15:05:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mConnected[0m
+07/06/2025 15:05:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] You joined the room[0m
+07/06/2025 15:05:30 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: Connection reset
+07/06/2025 15:05:30 [Project.Client.Client] ([32mINFO[0m):
+> Attempting to reconnect...
+07/06/2025 15:05:30 [Project.Client.Client] ([33mWARNING[0m):
+> Failed to connect: Connection refused: connect
+07/06/2025 15:05:33 [Project.Client.Client] ([32mINFO[0m):
+> Attempting to reconnect...
+07/06/2025 15:05:33 [Project.Client.Client] ([33mWARNING[0m):
+> Failed to connect: Connection refused: connect
+07/06/2025 15:05:36 [Project.Client.Client] ([32mINFO[0m):
+> Attempting to reconnect...
+07/06/2025 15:05:36 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+07/06/2025 15:05:36 [Project.Client.Client] ([32mINFO[0m):
+> Reconnected successfully
+07/06/2025 15:05:36 [Project.Client.Client] ([32mINFO[0m):
+> listenToServer thread stopped
+07/06/2025 15:05:36 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mClient ID already set[0m
+07/06/2025 15:05:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mConnected[0m
+07/06/2025 15:05:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] You joined the room[0m
+07/06/2025 15:05:48 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: Connection reset
+07/06/2025 15:05:48 [Project.Client.Client] ([32mINFO[0m):
+> Attempting to reconnect...
+07/06/2025 15:05:48 [Project.Client.Client] ([33mWARNING[0m):
+> Failed to connect: Connection refused: connect
+07/06/2025 15:06:01 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+07/06/2025 15:06:01 [Project.Client.Client] ([32mINFO[0m):
+> Client starting
+07/06/2025 15:06:01 [Project.Client.Client] ([32mINFO[0m):
+> Waiting for input
+07/06/2025 15:06:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to Mukaddis[0m
+07/06/2025 15:06:06 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+07/06/2025 15:06:07 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mConnected[0m
+07/06/2025 15:06:07 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] You joined the room[0m
+07/06/2025 15:06:09 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mMukaddis#1: hi[0m
+07/06/2025 15:06:22 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: Connection reset
+07/06/2025 15:06:22 [Project.Client.Client] ([32mINFO[0m):
+> Attempting to reconnect...
+07/06/2025 15:06:22 [Project.Client.Client] ([33mWARNING[0m):
+> Failed to connect: Connection refused: connect
+07/06/2025 15:06:25 [Project.Client.Client] ([32mINFO[0m):
+> Attempting to reconnect...
+07/06/2025 15:06:25 [Project.Client.Client] ([33mWARNING[0m):
+> Failed to connect: Connection refused: connect
+07/06/2025 15:06:28 [Project.Client.Client] ([32mINFO[0m):
+> Attempting to reconnect...
+07/06/2025 15:06:28 [Project.Client.Client] ([33mWARNING[0m):
+> Failed to connect: Connection refused: connect
+07/06/2025 15:06:31 [Project.Client.Client] ([32mINFO[0m):
+> Attempting to reconnect...
+07/06/2025 15:06:31 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+07/06/2025 15:06:31 [Project.Client.Client] ([32mINFO[0m):
+> Reconnected successfully
+07/06/2025 15:06:31 [Project.Client.Client] ([32mINFO[0m):
+> listenToServer thread stopped
+07/06/2025 15:06:31 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mClient ID already set[0m
+07/06/2025 15:06:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mConnected[0m
+07/06/2025 15:06:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] You joined the room[0m
