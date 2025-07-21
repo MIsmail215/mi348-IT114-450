@@ -1,3 +1,5 @@
+// Updated for Milestone 2 on 07/20/2025 by Mi348
+
 package Project.Client;
 
 import java.io.IOException;
@@ -151,6 +153,17 @@ public enum Client {
                 text = text.replace(Command.LIST_ROOMS.command, "").trim();
                 sendRoomAction(text, RoomAction.LIST);
                 wasCommand = true;
+            } else if (text.equalsIgnoreCase(Command.READY.command)) {
+                sendGameReady();
+                wasCommand = true;
+            } else if (text.startsWith(Command.PICK.command)) {
+                text = text.replace(Command.PICK.command, "").trim();
+                if (text.isEmpty()) {
+                    LoggerUtil.INSTANCE.warning(TextFX.colorize("Usage: /pick <option>", Color.RED));
+                    return true;
+                }
+                sendGamePick(text);
+                wasCommand = true;
             }
         }
         return wasCommand;
@@ -200,6 +213,21 @@ public enum Client {
         ConnectionPayload payload = new ConnectionPayload();
         payload.setClientName(name);
         payload.setPayloadType(PayloadType.CLIENT_CONNECT);
+        sendToServer(payload);
+    }
+
+    // Sends READY payload to notify player is ready
+    private void sendGameReady() throws IOException {
+        Payload payload = new Payload();
+        payload.setPayloadType(PayloadType.GAME_READY);
+        sendToServer(payload);
+    }
+
+    // Sends PICK payload with player's chosen move
+    private void sendGamePick(String choice) throws IOException {
+        Payload payload = new Payload();
+        payload.setPayloadType(PayloadType.GAME_PICK);
+        payload.setMessage(choice);
         sendToServer(payload);
     }
 
@@ -263,6 +291,16 @@ public enum Client {
                 break;
             case ROOM_LIST:
                 processRoomsList(p);
+                break;
+            case GAME_RESULT:
+            case GAME_STATE:
+            case ROUND_START:
+            case ROUND_END:
+            case PLAYER_ELIMINATED:
+            case SCOREBOARD:
+            case SESSION_START:
+            case SESSION_END:
+                LoggerUtil.INSTANCE.info(TextFX.colorize(p.getMessage(), Color.GREEN));
                 break;
             default:
                 LoggerUtil.INSTANCE.warning(TextFX.colorize("Unhandled payload type", Color.YELLOW));
