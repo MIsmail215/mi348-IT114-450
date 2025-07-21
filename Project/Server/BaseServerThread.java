@@ -193,7 +193,8 @@ public abstract class BaseServerThread extends Thread {
             info("My Client disconnected");
         } finally {
             if (currentRoom != null) {
-                currentRoom.handleDisconnect(this);
+                currentRoom.handleDisconnect((ServerThread) this);
+;
             }
             isRunning = false;
             info("Exited thread loop. Cleaning up connection");
