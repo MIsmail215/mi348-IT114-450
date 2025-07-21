@@ -1,10 +1,12 @@
-//UCID:Mi348
+// Updated: 2025-07-20 | UCID: Mi348
 package Project.Server;
 
+import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 
 import Project.Common.Constants;
 import Project.Common.LoggerUtil;
+import Project.Common.Payload;
 import Project.Common.RoomAction;
 import Project.Common.TextFX;
 import Project.Common.TextFX.Color;
@@ -12,11 +14,11 @@ import Project.Exceptions.DuplicateRoomException;
 import Project.Exceptions.RoomNotFoundException;
 
 public class Room implements AutoCloseable {
-    private final String name;// unique name of the Room
+    private final String name;
     private volatile boolean isRunning = false;
-    private final ConcurrentHashMap<Long, ServerThread> clientsInRoom = new ConcurrentHashMap<Long, ServerThread>();
-
+    private final ConcurrentHashMap<Long, ServerThread> clientsInRoom = new ConcurrentHashMap<>();
     public final static String LOBBY = "lobby";
+    private GameSession gameSession;
 
     private void info(String message) {
         LoggerUtil.INSTANCE.info(TextFX.colorize(String.format("Room[%s]: %s", name, message), Color.PURPLE));
@@ -24,7 +26,8 @@ public class Room implements AutoCloseable {
 
     public Room(String name) {
         this.name = name;
-        isRunning = true;
+        this.isRunning = true;
+        this.gameSession = new GameSession(this); // initialize game session
         info("Created");
     }
 
@@ -32,12 +35,12 @@ public class Room implements AutoCloseable {
         return this.name;
     }
 
+    public Collection<ServerThread> getClients() {
+        return clientsInRoom.values();
+    }
+
     protected synchronized void addClient(ServerThread client) {
-        if (!isRunning) return;
-        if (clientsInRoom.containsKey(client.getClientId())) {
-            info("Attempting to add a client that already exists in the room");
-            return;
-        }
+        if (!isRunning || clientsInRoom.containsKey(client.getClientId())) return;
         clientsInRoom.put(client.getClientId(), client);
         client.setCurrentRoom(this);
         client.sendResetUserList();
@@ -46,15 +49,10 @@ public class Room implements AutoCloseable {
     }
 
     protected synchronized void removeClient(ServerThread client) {
-        if (!isRunning) return;
-        if (!clientsInRoom.containsKey(client.getClientId())) {
-            info("Attempting to remove a client that doesn't exist in the room");
-            return;
-        }
-        ServerThread removedClient = clientsInRoom.get(client.getClientId());
+        if (!isRunning || !clientsInRoom.containsKey(client.getClientId())) return;
+        ServerThread removedClient = clientsInRoom.remove(client.getClientId());
         if (removedClient != null) {
             joinStatusRelay(removedClient, false);
-            clientsInRoom.remove(client.getClientId());
             autoCleanup();
         }
     }
@@ -62,31 +60,17 @@ public class Room implements AutoCloseable {
     private void syncExistingClients(ServerThread incomingClient) {
         clientsInRoom.values().forEach(serverThread -> {
             if (serverThread.getClientId() != incomingClient.getClientId()) {
-                boolean failedToSync = !incomingClient.sendClientInfo(serverThread.getClientId(),
-                        serverThread.getClientName(), RoomAction.JOIN, true);
-                if (failedToSync) {
-                    LoggerUtil.INSTANCE.warning(
-                            String.format("Removing disconnected %s from list", serverThread.getDisplayName()));
-                    disconnect(serverThread);
-                }
+                boolean failed = !incomingClient.sendClientInfo(serverThread.getClientId(), serverThread.getClientName(), RoomAction.JOIN, true);
+                if (failed) disconnect(serverThread);
             }
         });
     }
 
     private void joinStatusRelay(ServerThread client, boolean didJoin) {
         clientsInRoom.values().removeIf(serverThread -> {
-            String formattedMessage = String.format("Room[%s] %s %s the room",
-                    getName(),
-                    client.getClientId() == serverThread.getClientId() ? "You"
-                            : client.getDisplayName(),
-                    didJoin ? "joined" : "left");
-            final long senderId = client == null ? Constants.DEFAULT_CLIENT_ID : client.getClientId();
-            boolean failedToSync = !serverThread.sendClientInfo(client.getClientId(),
-                    client.getClientName(), didJoin ? RoomAction.JOIN : RoomAction.LEAVE);
-            boolean failedToSend = !serverThread.sendMessage(senderId, formattedMessage);
+            boolean failedToSync = !serverThread.sendClientInfo(client.getClientId(), client.getClientName(), didJoin ? RoomAction.JOIN : RoomAction.LEAVE);
+            boolean failedToSend = !serverThread.sendMessage(client.getClientId(), String.format("Room[%s] %s %s the room", getName(), client.getDisplayName(), didJoin ? "joined" : "left"));
             if (failedToSend || failedToSync) {
-                LoggerUtil.INSTANCE.warning(
-                        String.format("Removing disconnected %s from list", serverThread.getDisplayName()));
                 disconnect(serverThread);
             }
             return failedToSend;
@@ -94,83 +78,54 @@ public class Room implements AutoCloseable {
     }
 
     protected synchronized void relay(ServerThread sender, String message) {
-        if (!isRunning) return;
-
-        String senderString = sender == null ? String.format("Room[%s]", getName()) : sender.getDisplayName();
-        final long senderId = sender == null ? Constants.DEFAULT_CLIENT_ID : sender.getClientId();
+        String senderString = sender == null ? "Room[" + getName() + "]" : sender.getDisplayName();
+        long senderId = sender == null ? Constants.DEFAULT_CLIENT_ID : sender.getClientId();
         final String formattedMessage = String.format("%s: %s", senderString, message);
-
-        info(String.format("sending message to %s recipients: %s", clientsInRoom.size(), formattedMessage));
-
-        clientsInRoom.values().removeIf(serverThread -> {
-            boolean failedToSend = !serverThread.sendMessage(senderId, formattedMessage);
-            if (failedToSend) {
-                LoggerUtil.INSTANCE.warning(
-                        String.format("Removing disconnected %s from list", serverThread.getDisplayName()));
-                disconnect(serverThread);
-            }
-            return failedToSend;
-        });
+        clientsInRoom.values().removeIf(serverThread -> !serverThread.sendMessage(senderId, formattedMessage));
     }
 
     private synchronized void disconnect(ServerThread client) {
-        if (!isRunning) return;
-        ServerThread disconnectingServerThread = clientsInRoom.remove(client.getClientId());
-        if (disconnectingServerThread != null) {
-            clientsInRoom.values().removeIf(serverThread -> {
-                if (serverThread.getClientId() == disconnectingServerThread.getClientId()) return true;
-                boolean failedToSend = !serverThread.sendClientInfo(disconnectingServerThread.getClientId(),
-                        disconnectingServerThread.getClientName(), RoomAction.LEAVE);
-                if (failedToSend) {
-                    LoggerUtil.INSTANCE.warning(
-                            String.format("Removing disconnected %s from list", serverThread.getDisplayName()));
-                    disconnect(serverThread);
-                }
-                return failedToSend;
-            });
-            relay(null, disconnectingServerThread.getDisplayName() + " disconnected");
-            disconnectingServerThread.disconnect();
+        ServerThread removed = clientsInRoom.remove(client.getClientId());
+        if (removed != null) {
+            clientsInRoom.values().removeIf(serverThread -> !serverThread.sendClientInfo(removed.getClientId(), removed.getClientName(), RoomAction.LEAVE));
+            relay(null, removed.getDisplayName() + " disconnected");
+            removed.disconnect();
         }
         autoCleanup();
     }
 
     protected synchronized void disconnectAll() {
-        info("Disconnect All triggered");
-        if (!isRunning) return;
-        clientsInRoom.values().removeIf(client -> {
-            disconnect(client);
-            return true;
-        });
-        info("Disconnect All finished");
+        clientsInRoom.values().forEach(this::disconnect);
     }
 
     private void autoCleanup() {
-        if (!Room.LOBBY.equalsIgnoreCase(name) && clientsInRoom.isEmpty()) {
+        if (!LOBBY.equalsIgnoreCase(name) && clientsInRoom.isEmpty()) {
             close();
         }
     }
 
     @Override
     public void close() {
-        if (!clientsInRoom.isEmpty()) {
-            relay(null, "Room is shutting down, migrating to lobby");
-            info(String.format("migrating %s clients", clientsInRoom.size()));
-            clientsInRoom.values().removeIf(client -> {
-                try {
-                    Server.INSTANCE.joinRoom(Room.LOBBY, client);
-                } catch (RoomNotFoundException e) {
-                    LoggerUtil.INSTANCE.severe("Lobby not found, this shouldn't happen", e);
-                }
-                return true;
-            });
-        }
+        relay(null, "Room is shutting down. Moving everyone to lobby.");
+        clientsInRoom.values().forEach(client -> {
+            try {
+                Server.INSTANCE.joinRoom(LOBBY, client);
+            } catch (RoomNotFoundException e) {
+                LoggerUtil.INSTANCE.severe("Lobby not found", e);
+            }
+        });
+        clientsInRoom.clear();
         Server.INSTANCE.removeRoom(this);
         isRunning = false;
-        clientsInRoom.clear();
-        info("closed");
+        info("Room closed");
     }
 
-    // Room-related handlers
+    // Milestone 2: broadcast payload to room
+    public synchronized void broadcastPayload(Payload payload) {
+        clientsInRoom.values().removeIf(client -> !client.sendToClient(payload));
+    }
+
+    // Room command handlers
     public void handleListRooms(ServerThread sender, String roomQuery) {
         sender.sendRooms(Server.INSTANCE.listRooms(roomQuery));
     }
@@ -179,10 +134,10 @@ public class Room implements AutoCloseable {
         try {
             Server.INSTANCE.createRoom(roomName);
             Server.INSTANCE.joinRoom(roomName, sender);
-        } catch (RoomNotFoundException e) {
-            LoggerUtil.INSTANCE.severe("Room wasn't found (shouldn't happen)", e);
         } catch (DuplicateRoomException e) {
-            sender.sendMessage(Constants.DEFAULT_CLIENT_ID, String.format("Room %s already exists", roomName));
+            sender.sendMessage(Constants.DEFAULT_CLIENT_ID, "Room already exists");
+        } catch (RoomNotFoundException e) {
+            sender.sendMessage(Constants.DEFAULT_CLIENT_ID, "Error joining newly created room");
         }
     }
 
@@ -190,25 +145,31 @@ public class Room implements AutoCloseable {
         try {
             Server.INSTANCE.joinRoom(roomName, sender);
         } catch (RoomNotFoundException e) {
-            sender.sendMessage(Constants.DEFAULT_CLIENT_ID, String.format("Room %s doesn't exist", roomName));
+            sender.sendMessage(Constants.DEFAULT_CLIENT_ID, "Room does not exist");
         }
     }
 
-    protected synchronized void handleDisconnect(BaseServerThread sender) {
-        handleDisconnect((ServerThread) sender);
-    }
-
-    protected synchronized void handleDisconnect(ServerThread sender) {
+    // ✅ Made public to fix red underline in BaseServerThread.java
+    public synchronized void handleDisconnect(ServerThread sender) {
         disconnect(sender);
     }
 
     protected synchronized void handleReverseText(ServerThread sender, String text) {
-        StringBuilder sb = new StringBuilder(text);
-        sb.reverse();
-        relay(sender, sb.toString());
+        String reversed = new StringBuilder(text).reverse().toString();
+        relay(sender, reversed);
     }
 
     protected synchronized void handleMessage(ServerThread sender, String text) {
         relay(sender, text);
+    }
+
+    // Milestone 2: handle GAME_READY
+    protected synchronized void handleGameReady(ServerThread sender) {
+        gameSession.markReady(sender, clientsInRoom.values());
+    }
+
+    // Milestone 2: handle GAME_PICK
+    protected synchronized void handlePlayerPick(ServerThread sender, String pick) {
+        gameSession.registerPick(sender, pick);
     }
 }

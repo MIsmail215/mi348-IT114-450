@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "type": "java",
+        "name": "Server",
+        "request": "launch",
+        "mainClass": "Project.Server.Server",
+        "projectName": "mi348-IT114-450_8bd41477"
+    },
+    {
+        "type": "java",
+        "name": "Client",
+        "request": "launch",
+        "mainClass": "Project.Client.Client",
+        "projectName": "mi348-IT114-450_8bd41477"
+    },
+    {
+        "type": "java",
+        "name": "Launch Server",
+        "request": "launch",
+        "mainClass": "Project.Server.Server",
+        "projectName": "mi348-IT114-450"
+    },
+    {
+        "type": "java",
+        "name": "Launch Client",
+        "request": "launch",
+        "mainClass": "Project.Client.Client",
+        "projectName": "mi348-IT114-450"
+    }
+]
+}
