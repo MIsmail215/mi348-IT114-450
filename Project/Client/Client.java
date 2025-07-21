@@ -1,5 +1,3 @@
-// Updated for Milestone 2 on 07/20/2025 by Mi348
-
 package Project.Client;
 
 import java.io.IOException;
