@@ -8,3 +8,395 @@
 > [0;33mServer: Created new Room lobby[0m
 07/21/2025 13:34:11 [Project.Server.Server] ([32mINFO[0m):
 > [0;33mServer: Waiting for next client[0m
+07/21/2025 15:35:05 [Project.Server.Server] ([32mINFO[0m):
+> Server Starting
+07/21/2025 15:35:05 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Listening on port 3000[0m
+07/21/2025 15:35:05 [Project.Server.Room] ([32mINFO[0m):
+> [0;35mRoom[lobby]: Created[0m
+07/21/2025 15:35:05 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Created new Room lobby[0m
+07/21/2025 15:35:05 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Waiting for next client[0m
+07/21/2025 15:35:36 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Client connected[0m
+07/21/2025 15:35:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread created[0m
+07/21/2025 15:35:36 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Waiting for next client[0m
+07/21/2025 15:35:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Thread starting[0m
+07/21/2025 15:35:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Received from my client: Payload[CLIENT_CONNECT] Client Id [0] Message: [null] ClientName: [Mukaddis][0m
+07/21/2025 15:35:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[CLIENT_ID] Client Id [1] Message: [null] ClientName: [Mukaddis][0m
+07/21/2025 15:35:36 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: *Mukaddis#1 initialized*[0m
+07/21/2025 15:35:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[ROOM_JOIN] Client Id [-1] Message: [null] ClientName: [null][0m
+07/21/2025 15:35:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[ROOM_JOIN] Client Id [1] Message: [null] ClientName: [Mukaddis][0m
+07/21/2025 15:35:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Room[lobby] Mukaddis#1 joined the room][0m
+07/21/2025 15:35:36 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: *Mukaddis#1 added to Lobby*[0m
+07/21/2025 15:36:43 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Client connected[0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread created[0m
+07/21/2025 15:36:43 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Waiting for next client[0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Thread starting[0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Received from my client: Payload[CLIENT_CONNECT] Client Id [0] Message: [null] ClientName: [Jason][0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[CLIENT_ID] Client Id [2] Message: [null] ClientName: [Jason][0m
+07/21/2025 15:36:43 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: *Jason#2 initialized*[0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[ROOM_JOIN] Client Id [-1] Message: [null] ClientName: [null][0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[SYNC_CLIENT] Client Id [1] Message: [null] ClientName: [Mukaddis][0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[ROOM_JOIN] Client Id [2] Message: [null] ClientName: [Jason][0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Room[lobby] Jason#2 joined the room][0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[ROOM_JOIN] Client Id [2] Message: [null] ClientName: [Jason][0m
+07/21/2025 15:36:43 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Room[lobby] Jason#2 joined the room][0m
+07/21/2025 15:36:43 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: *Jason#2 added to Lobby*[0m
+07/21/2025 15:41:30 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[ROOM_CREATE] Client Id [0] Message: [Testgame][0m
+07/21/2025 15:41:30 [Project.Server.Room] ([32mINFO[0m):
+> [0;35mRoom[Testgame]: Created[0m
+07/21/2025 15:41:30 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Created new Room Testgame[0m
+07/21/2025 15:41:30 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Removing client from previous Room lobby[0m
+07/21/2025 15:41:30 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[ROOM_LEAVE] Client Id [1] Message: [null] ClientName: [Mukaddis][0m
+07/21/2025 15:41:30 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Room[lobby] Mukaddis#1 left the room][0m
+07/21/2025 15:41:30 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[ROOM_JOIN] Client Id [-1] Message: [null] ClientName: [null][0m
+07/21/2025 15:41:30 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[ROOM_JOIN] Client Id [1] Message: [null] ClientName: [Mukaddis][0m
+07/21/2025 15:41:30 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Room[Testgame] Mukaddis#1 joined the room][0m
+07/21/2025 15:41:41 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[ROOM_JOIN] Client Id [0] Message: [Testgame][0m
+07/21/2025 15:41:41 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Removing client from previous Room lobby[0m
+07/21/2025 15:41:41 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[ROOM_JOIN] Client Id [-1] Message: [null] ClientName: [null][0m
+07/21/2025 15:41:41 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[SYNC_CLIENT] Client Id [1] Message: [null] ClientName: [Mukaddis][0m
+07/21/2025 15:41:41 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[ROOM_JOIN] Client Id [2] Message: [null] ClientName: [Jason][0m
+07/21/2025 15:41:41 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Room[Testgame] Jason#2 joined the room][0m
+07/21/2025 15:41:41 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[ROOM_JOIN] Client Id [2] Message: [null] ClientName: [Jason][0m
+07/21/2025 15:41:41 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Room[Testgame] Jason#2 joined the room][0m
+07/21/2025 15:41:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[ROOM_LIST] Client Id [0] Message: [][0m
+07/21/2025 15:41:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[ROOM_LIST] Client Id [0] Message: [null]Rooms [Testgame,lobby][0m
+07/21/2025 15:41:59 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[GAME_READY] Client Id [0] Message: [null][0m
+07/21/2025 15:41:59 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Thread-3 is ready (1/2)][0m
+07/21/2025 15:41:59 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Thread-3 is ready (1/2)][0m
+07/21/2025 15:42:01 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[GAME_READY] Client Id [0] Message: [null][0m
+07/21/2025 15:42:01 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Thread-1 is ready (2/2)][0m
+07/21/2025 15:42:01 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Thread-1 is ready (2/2)][0m
+07/21/2025 15:42:01 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;32mGameSession: Starting game[0m
+07/21/2025 15:42:01 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;33mGameSession: Starting Round 1[0m
+07/21/2025 15:42:01 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 1. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:42:01 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 1. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:42:09 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[GAME_PICK] Client Id [0] Message: [r][0m
+07/21/2025 15:42:09 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis has locked in their pick.][0m
+07/21/2025 15:42:09 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis has locked in their pick.][0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[GAME_PICK] Client Id [0] Message: [s][0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason has locked in their pick.][0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason has locked in their pick.][0m
+07/21/2025 15:42:12 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;31mGameSession: Ending Round 1[0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis(r) vs Jason(s) -> Mukaddis wins][0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis(r) vs Jason(s) -> Mukaddis wins][0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason(s) vs Mukaddis(r) -> Mukaddis wins][0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason(s) vs Mukaddis(r) -> Mukaddis wins][0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: [PointsPayload] null (ID: 1) has 1 points[0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: [PointsPayload] null (ID: 1) has 1 points[0m
+07/21/2025 15:42:12 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;33mGameSession: Starting Round 2[0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 2. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:42:12 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 2. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:42:24 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[GAME_PICK] Client Id [0] Message: [p][0m
+07/21/2025 15:42:24 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis has locked in their pick.][0m
+07/21/2025 15:42:24 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis has locked in their pick.][0m
+07/21/2025 15:42:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[GAME_PICK] Client Id [0] Message: [p][0m
+07/21/2025 15:42:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason has locked in their pick.][0m
+07/21/2025 15:42:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason has locked in their pick.][0m
+07/21/2025 15:42:27 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;31mGameSession: Ending Round 2[0m
+07/21/2025 15:42:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis(p) vs Jason(p) -> Tie][0m
+07/21/2025 15:42:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis(p) vs Jason(p) -> Tie][0m
+07/21/2025 15:42:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason(p) vs Mukaddis(p) -> Tie][0m
+07/21/2025 15:42:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason(p) vs Mukaddis(p) -> Tie][0m
+07/21/2025 15:42:27 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;33mGameSession: Starting Round 3[0m
+07/21/2025 15:42:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 3. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:42:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 3. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:42:32 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[GAME_PICK] Client Id [0] Message: [r][0m
+07/21/2025 15:42:32 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis has locked in their pick.][0m
+07/21/2025 15:42:32 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis has locked in their pick.][0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[GAME_PICK] Client Id [0] Message: [p][0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason has locked in their pick.][0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason has locked in their pick.][0m
+07/21/2025 15:42:35 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;31mGameSession: Ending Round 3[0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis(r) vs Jason(p) -> Jason wins][0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis(r) vs Jason(p) -> Jason wins][0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason(p) vs Mukaddis(r) -> Jason wins][0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason(p) vs Mukaddis(r) -> Jason wins][0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: [PointsPayload] null (ID: 2) has 1 points[0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: [PointsPayload] null (ID: 2) has 1 points[0m
+07/21/2025 15:42:35 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;33mGameSession: Starting Round 4[0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 4. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:42:35 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 4. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:42:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[GAME_PICK] Client Id [0] Message: [s][0m
+07/21/2025 15:42:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis has locked in their pick.][0m
+07/21/2025 15:42:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis has locked in their pick.][0m
+07/21/2025 15:42:58 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[GAME_PICK] Client Id [0] Message: [s][0m
+07/21/2025 15:42:58 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason has locked in their pick.][0m
+07/21/2025 15:42:58 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason has locked in their pick.][0m
+07/21/2025 15:42:58 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;31mGameSession: Ending Round 4[0m
+07/21/2025 15:42:58 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis(s) vs Jason(s) -> Tie][0m
+07/21/2025 15:42:58 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis(s) vs Jason(s) -> Tie][0m
+07/21/2025 15:42:58 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason(s) vs Mukaddis(s) -> Tie][0m
+07/21/2025 15:42:58 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason(s) vs Mukaddis(s) -> Tie][0m
+07/21/2025 15:42:58 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;33mGameSession: Starting Round 5[0m
+07/21/2025 15:42:58 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 5. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:42:58 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Starting Round 5. Make your pick: /pick <r|p|s>][0m
+07/21/2025 15:43:28 [Project.Server.GameSession] ([32mINFO[0m):
+> GameSession: Timer expired
+07/21/2025 15:43:28 [Project.Server.GameSession] ([32mINFO[0m):
+> [0;31mGameSession: Ending Round 5[0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis was eliminated (no pick)][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis was eliminated (no pick)][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason was eliminated (no pick)][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason was eliminated (no pick)][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Game ended in a tie. No players remain.][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Game ended in a tie. No players remain.][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: == FINAL SCORES ==][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: == FINAL SCORES ==][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis - 1 point(s)][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Mukaddis - 1 point(s)][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason - 1 point(s)][0m
+07/21/2025 15:43:28 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason - 1 point(s)][0m
+07/21/2025 16:53:31 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[MESSAGE] Client Id [0] Message: [][0m
+07/21/2025 16:53:32 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Mukaddis#1: ][0m
+07/21/2025 16:53:32 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Mukaddis#1: ][0m
+07/21/2025 16:53:33 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[MESSAGE] Client Id [0] Message: [][0m
+07/21/2025 16:53:33 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Jason#2: ][0m
+07/21/2025 16:53:33 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Jason#2: ][0m
+07/21/2025 16:53:34 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[MESSAGE] Client Id [0] Message: [][0m
+07/21/2025 16:53:34 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Mukaddis#1: ][0m
+07/21/2025 16:53:34 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Mukaddis#1: ][0m
+07/21/2025 16:53:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[MESSAGE] Client Id [0] Message: [hey jason][0m
+07/21/2025 16:53:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Mukaddis#1: hey jason][0m
+07/21/2025 16:53:36 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Mukaddis#1: hey jason][0m
+07/21/2025 16:53:38 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[MESSAGE] Client Id [0] Message: [hi][0m
+07/21/2025 16:53:38 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Jason#2: hi][0m
+07/21/2025 16:53:38 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Jason#2: hi][0m
+07/21/2025 16:53:42 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Received from my client: Payload[MESSAGE] Client Id [0] Message: [wyd][0m
+07/21/2025 16:53:42 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Mukaddis#1: wyd][0m
+07/21/2025 16:53:42 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [1] Message: [Mukaddis#1: wyd][0m
+07/21/2025 16:53:48 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Received from my client: Payload[MESSAGE] Client Id [0] Message: [waiting for TERRY to join ][0m
+07/21/2025 16:53:48 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Jason#2: waiting for TERRY to join ][0m
+07/21/2025 16:53:48 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Sending to client: Payload[MESSAGE] Client Id [2] Message: [Jason#2: waiting for TERRY to join ][0m
+07/21/2025 17:01:27 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Client connected[0m
+07/21/2025 17:01:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread created[0m
+07/21/2025 17:01:27 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Waiting for next client[0m
+07/21/2025 17:01:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Thread starting[0m
+07/21/2025 17:01:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Received from my client: Payload[CLIENT_CONNECT] Client Id [0] Message: [null] ClientName: [Terry][0m
+07/21/2025 17:01:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[3]: Sending to client: Payload[CLIENT_ID] Client Id [3] Message: [null] ClientName: [Terry][0m
+07/21/2025 17:01:27 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: *Terry#3 initialized*[0m
+07/21/2025 17:01:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[3]: Sending to client: Payload[ROOM_JOIN] Client Id [-1] Message: [null] ClientName: [null][0m
+07/21/2025 17:01:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[3]: Sending to client: Payload[ROOM_JOIN] Client Id [3] Message: [null] ClientName: [Terry][0m
+07/21/2025 17:01:27 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[3]: Sending to client: Payload[MESSAGE] Client Id [3] Message: [Room[lobby] Terry#3 joined the room][0m
+07/21/2025 17:01:27 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: *Terry#3 added to Lobby*[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: IO exception while reading from client[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[ROOM_LEAVE] Client Id [2] Message: [null] ClientName: [Jason][0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Sending to client: Payload[MESSAGE] Client Id [-1] Message: [Room[Testgame]: Jason#2 disconnected][0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: Thread being disconnected by server[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[2]: ServerThread cleanup() start[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Closed Server-side Socket[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread cleanup() end[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Exited thread loop. Cleaning up connection[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread cleanup() start[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Closed Server-side Socket[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread cleanup() end[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[3]: IO exception while reading from client[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[3]: Thread being disconnected by server[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[3]: ServerThread cleanup() start[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Closed Server-side Socket[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread cleanup() end[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Exited thread loop. Cleaning up connection[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread cleanup() start[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Closed Server-side Socket[0m
+07/21/2025 17:01:54 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread cleanup() end[0m
+07/21/2025 17:01:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: IO exception while reading from client[0m
+07/21/2025 17:01:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: Thread being disconnected by server[0m
+07/21/2025 17:01:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[1]: ServerThread cleanup() start[0m
+07/21/2025 17:01:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Closed Server-side Socket[0m
+07/21/2025 17:01:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread cleanup() end[0m
+07/21/2025 17:01:56 [Project.Server.Server] ([32mINFO[0m):
+> [0;33mServer: Removed room Testgame[0m
+07/21/2025 17:01:56 [Project.Server.Room] ([32mINFO[0m):
+> [0;35mRoom[Testgame]: Room closed[0m
+07/21/2025 17:01:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Exited thread loop. Cleaning up connection[0m
+07/21/2025 17:01:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread cleanup() start[0m
+07/21/2025 17:01:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: Closed Server-side Socket[0m
+07/21/2025 17:01:56 [Project.Server.ServerThread] ([32mINFO[0m):
+> [0;36mThread[-1]: ServerThread cleanup() end[0m
