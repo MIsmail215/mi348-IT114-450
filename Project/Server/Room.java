@@ -38,7 +38,7 @@ public class Room implements AutoCloseable {
     public Collection<ServerThread> getClients() {
         return clientsInRoom.values();
     }
-
+//UCID MI348 7/21/25
     protected synchronized void addClient(ServerThread client) {
         if (!isRunning || clientsInRoom.containsKey(client.getClientId())) return;
         clientsInRoom.put(client.getClientId(), client);

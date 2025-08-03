@@ -22,7 +22,7 @@ public class GameSession {
     public GameSession(Room room) {
         this.room = room;
     }
-
+//MI348 DATE 7/21/25
     // Starts the game session
     private void startSession() {
         inProgress = true;
