@@ -400,3 +400,27 @@
 > Attempting to reconnect...
 07/26/2025 20:27:22 [Project.Client.Client] ([33mWARNING[0m):
 > Failed to connect: Connection refused: connect
+08/03/2025 15:11:07 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:11:49 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:50 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:51 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:52 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:52 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:52 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:12:44 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:12:57 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:13:05 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:27:11 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:27:18 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
