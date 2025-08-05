@@ -16,6 +16,8 @@ public class ClientGameUI {
     private JButton paperButton;
     private JButton scissorsButton;
 
+    private String lastPick = "";
+
     public ClientGameUI() {
         frame = new JFrame("RPS Multiplayer Game - Milestone 3");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,7 +54,7 @@ public class ClientGameUI {
         readyButton = new JButton("Ready");
         rockButton = new JButton("Rock");
         paperButton = new JButton("Paper");
-        scissorsButton = new JButton("Scissors");
+        scissorsButton = new JButton("scissors");
 
         actionPanel.add(readyButton);
         actionPanel.add(rockButton);
@@ -62,12 +64,31 @@ public class ClientGameUI {
 
         frame.setVisible(true);
 
-        // ✅ Corrected string syntax with "\n" instead of broken lines
-        connectButton.addActionListener(e -> eventLog.append("Connecting to server...\n"));
+        // Action handlers
+        connectButton.addActionListener(e -> {
+            String host = hostField.getText().trim();
+            String port = portField.getText().trim();
+            String name = nameField.getText().trim();
+            eventLog.append("Connecting to " + host + ":" + port + " as " + name + "\n");
+            // Client.INSTANCE.connect(host, Integer.parseInt(port));
+            // Client.INSTANCE.setUserName(name);
+        });
+
         readyButton.addActionListener(e -> eventLog.append("Player marked ready\n"));
-        rockButton.addActionListener(e -> eventLog.append("Picked ROCK\n"));
-        paperButton.addActionListener(e -> eventLog.append("Picked PAPER\n"));
-        scissorsButton.addActionListener(e -> eventLog.append("Picked SCISSORS\n"));
+        
+        rockButton.addActionListener(e -> sendPick("rock"));
+        paperButton.addActionListener(e -> sendPick("paper"));
+        scissorsButton.addActionListener(e -> sendPick("scissors"));
+    }
+
+    private void sendPick(String pick) {
+        if (pick.equals(lastPick)) {
+            eventLog.append("Cooldown: Can't pick same option twice in a row!\n");
+            return;
+        }
+        lastPick = pick;
+        eventLog.append("Picked " + pick.toUpperCase() + "\n");
+        // Client.INSTANCE.sendGamePick(pick);
     }
 
     public static void main(String[] args) {

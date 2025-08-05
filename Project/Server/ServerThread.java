@@ -14,6 +14,8 @@ import Project.Common.PayloadType;
 import Project.Common.RoomAction;
 import Project.Common.RoomResultPayload;
 import Project.Common.TextFX;
+import Project.Server.Room;
+import Project.Common.RoomResultPayload;
 
 /**
  * A server-side representation of a single client
@@ -94,12 +96,12 @@ public class ServerThread extends BaseServerThread {
 
     // Sends a message payload
     protected boolean sendMessage(long clientId, String message) {
-        Payload payload = new Payload();
-        payload.setPayloadType(PayloadType.MESSAGE);
-        payload.setMessage(message);
-        payload.setClientId(clientId);
-        return sendToClient(payload);
-    }
+    Payload payload = new Payload();
+    payload.setPayloadType(PayloadType.MESSAGE);
+    payload.setMessage("[" + getClientName() + "]: " + message); // Use name in message
+    payload.setClientId(clientId);
+    return sendToClient(payload);
+}
 
     // Handles all incoming payloads from client
     @Override

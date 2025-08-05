@@ -1,110 +1,78 @@
 
+// UCID: mi348 | Updated: 2025-08-04
 package Project.Client;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Vector;
 
-public class GameUI {
-    private JFrame frame;
-    private JPanel connectPanel, controlPanel, gamePanel, eventPanel;
-    private JTextField hostField, portField, nameField;
-    private JButton connectButton, readyButton, rockButton, paperButton, scissorsButton;
-    private JTextArea eventLog;
-    private JList<String> playerList;
-    private DefaultListModel<String> playerListModel;
-
-    private String lastPick = "";
+public class GameUI extends JFrame {
+    private JPanel readyPanel;
+    private JPanel gameAreaPanel;
+    private JButton readyButton;
+    private JTextArea gameEventsArea;
+    private JTable playerTable;
+    private DefaultTableModel playerTableModel;
 
     public GameUI() {
-        frame = new JFrame("Rock Paper Scissors Multiplayer - Milestone 3");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setLayout(new BorderLayout());
+        setTitle("Rock Paper Scissors - Game UI");
+        setSize(800, 600);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
 
-        setupConnectPanel();
-        setupGamePanel();
-        setupEventPanel();
-        setupControlPanel();
+        // Ready Panel
+        readyPanel = new JPanel();
+        readyButton = new JButton("I'm Ready");
+        readyPanel.add(readyButton);
+        add(readyPanel, BorderLayout.NORTH);
 
-        frame.setVisible(true);
+        // Game Area Panel
+        gameAreaPanel = new JPanel(new BorderLayout());
+
+        // Player Table
+        String[] columnNames = { "Username", "Client ID", "Points", "Status" };
+        playerTableModel = new DefaultTableModel(columnNames, 0);
+        playerTable = new JTable(playerTableModel);
+        JScrollPane tableScroll = new JScrollPane(playerTable);
+
+        // Game Events Log
+        gameEventsArea = new JTextArea();
+        gameEventsArea.setEditable(false);
+        JScrollPane eventScroll = new JScrollPane(gameEventsArea);
+        eventScroll.setBorder(BorderFactory.createTitledBorder("Game Events"));
+
+        // Add to Game Panel
+        gameAreaPanel.add(tableScroll, BorderLayout.CENTER);
+        gameAreaPanel.add(eventScroll, BorderLayout.SOUTH);
+
+        add(gameAreaPanel, BorderLayout.CENTER);
+
+        setVisible(true);
     }
 
-    private void setupConnectPanel() {
-        connectPanel = new JPanel(new FlowLayout());
-        hostField = new JTextField("localhost", 10);
-        portField = new JTextField("3000", 5);
-        nameField = new JTextField("YourName", 10);
-        connectButton = new JButton("Connect");
-
-        connectButton.addActionListener(e -> {
-            eventLog.append("Connecting to " + hostField.getText() + ":" + portField.getText() + " as " + nameField.getText() + "\n");
-            // Implement connection logic to server via Client.java if needed
-        });
-
-        connectPanel.add(new JLabel("Host:"));
-        connectPanel.add(hostField);
-        connectPanel.add(new JLabel("Port:"));
-        connectPanel.add(portField);
-        connectPanel.add(new JLabel("Username:"));
-        connectPanel.add(nameField);
-        connectPanel.add(connectButton);
-
-        frame.add(connectPanel, BorderLayout.NORTH);
+    public JButton getReadyButton() {
+        return readyButton;
     }
 
-    private void setupGamePanel() {
-        gamePanel = new JPanel(new BorderLayout());
-
-        playerListModel = new DefaultListModel<>();
-        playerList = new JList<>(playerListModel);
-        gamePanel.add(new JScrollPane(playerList), BorderLayout.CENTER);
-
-        frame.add(gamePanel, BorderLayout.WEST);
+    public void updateGameEvent(String event) {
+        gameEventsArea.append(event + "\n");
     }
 
-    private void setupEventPanel() {
-        eventPanel = new JPanel(new BorderLayout());
-        eventLog = new JTextArea();
-        eventLog.setEditable(false);
-        eventPanel.add(new JScrollPane(eventLog), BorderLayout.CENTER);
-        frame.add(eventPanel, BorderLayout.CENTER);
-    }
-
-    private void setupControlPanel() {
-        controlPanel = new JPanel(new FlowLayout());
-        readyButton = new JButton("Ready");
-        rockButton = new JButton("Rock");
-        paperButton = new JButton("Paper");
-        scissorsButton = new JButton("Scissors");
-
-        readyButton.addActionListener(e -> eventLog.append("You marked ready\n"));
-
-        rockButton.addActionListener(e -> sendPick("rock"));
-        paperButton.addActionListener(e -> sendPick("paper"));
-        scissorsButton.addActionListener(e -> sendPick("scissors"));
-
-        controlPanel.add(readyButton);
-        controlPanel.add(rockButton);
-        controlPanel.add(paperButton);
-        controlPanel.add(scissorsButton);
-
-        frame.add(controlPanel, BorderLayout.SOUTH);
-    }
-
-    private void sendPick(String pick) {
-        if (lastPick.equals(pick)) {
-            eventLog.append("Cooldown: Cannot pick same option twice in a row!\n");
-            return;
+    public void updatePlayerTable(Vector<Vector<Object>> data) {
+        playerTableModel.setRowCount(0);
+        for (Vector<Object> row : data) {
+            playerTableModel.addRow(row);
         }
-        lastPick = pick;
-        eventLog.append("You picked: " + pick + "\n");
-        // Implement sending pick to server via Client.INSTANCE.sendGamePick(pick);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(GameUI::new);
+    public void resetForNewSession() {
+        gameEventsArea.setText("");
+        playerTableModel.setRowCount(0);
+        readyPanel.setVisible(true);
+    }
+
+    public void hideReadyPanel() {
+        readyPanel.setVisible(false);
     }
 }

@@ -10,7 +10,6 @@ import Project.Common.PointsPayload;
 import Project.Common.TextFX;
 import Project.Common.TextFX.Color;
 
-
 public class GameSession {
     private Room room;
     private Map<Long, PlayerState> players = new ConcurrentHashMap<>();
@@ -22,8 +21,7 @@ public class GameSession {
     public GameSession(Room room) {
         this.room = room;
     }
-//MI348 DATE 7/21/25
-    // Starts the game session
+
     private void startSession() {
         inProgress = true;
         round = 0;
@@ -35,7 +33,6 @@ public class GameSession {
         startRound();
     }
 
-    // Begins a new round
     private void startRound() {
         round++;
         LoggerUtil.INSTANCE.info(TextFX.colorize("GameSession: Starting Round " + round, Color.YELLOW));
@@ -45,11 +42,10 @@ public class GameSession {
             }
         });
 
-        broadcast("Starting Round " + round + ". Make your pick: /pick <r|p|s>");
+        broadcast("Starting Round " + round + ". Make your pick: /pick <rock|paper|scissors>");
         startRoundTimer();
     }
 
-    // Ends the round either from all picks or timer
     private void endRound() {
         stopRoundTimer();
         LoggerUtil.INSTANCE.info(TextFX.colorize("GameSession: Ending Round " + round, Color.RED));
@@ -71,7 +67,6 @@ public class GameSession {
         evaluateGameStatus();
     }
 
-    // Called by Room when player sends /gameReady
     public synchronized void markReady(ServerThread sender, Collection<ServerThread> allPlayers) {
         if (inProgress) return;
         PlayerState p = players.getOrDefault(sender.getClientId(), new PlayerState(sender));
@@ -88,7 +83,6 @@ public class GameSession {
         }
     }
 
-    // Called by Room when player sends /pick <option>
     public synchronized void registerPick(ServerThread sender, String rawPick) {
         if (!inProgress) {
             sender.sendMessage(sender.getClientId(), "Game has not started. Type /ready first.");
@@ -99,8 +93,8 @@ public class GameSession {
         if (p == null || p.isEliminated()) return;
 
         String pick = rawPick.trim().toLowerCase();
-        if (!Set.of("r", "p", "s").contains(pick)) {
-            sender.sendMessage(sender.getClientId(), "Invalid pick. Use: r, p, or s.");
+        if (!Set.of("rock", "paper", "scissors").contains(pick)) {
+            sender.sendMessage(sender.getClientId(), "Invalid pick. Use: rock, paper, or scissors.");
             return;
         }
 
@@ -117,7 +111,6 @@ public class GameSession {
         }
     }
 
-    // Logic to resolve battles
     private void resolveBattles() {
         List<PlayerState> active = getActivePlayers();
         if (active.size() < 2) return;
@@ -150,7 +143,6 @@ public class GameSession {
         }
     }
 
-    // Checks game end condition
     private void evaluateGameStatus() {
         List<PlayerState> active = getActivePlayers();
 
@@ -165,7 +157,6 @@ public class GameSession {
         }
     }
 
-    // Ends the session and resets all players
     private void endSession() {
         inProgress = false;
         stopRoundTimer();
@@ -197,7 +188,7 @@ public class GameSession {
         roundTimer = scheduler.schedule(() -> {
             LoggerUtil.INSTANCE.info("GameSession: Timer expired");
             endRound();
-        }, 30, TimeUnit.SECONDS); // 30 second timer
+        }, 30, TimeUnit.SECONDS);
     }
 
     private void stopRoundTimer() {
@@ -218,12 +209,13 @@ public class GameSession {
         return result;
     }
 
-    // Compares two picks
     private int compare(String a, String b) {
         if (a.equals(b)) return 0;
-        if ((a.equals("r") && b.equals("s")) || (a.equals("p") && b.equals("r")) || (a.equals("s") && b.equals("p"))) {
-            return 1;
-        }
-        return -1;
+        return switch (a) {
+            case "rock" -> b.equals("scissors") ? 1 : -1;
+            case "paper" -> b.equals("rock") ? 1 : -1;
+            case "scissors" -> b.equals("paper") ? 1 : -1;
+            default -> -1;
+        };
     }
 }
