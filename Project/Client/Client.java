@@ -1,50 +1,333 @@
+// UCID: mi348
+// Date: 2025-08-06
 package Project.Client;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import Project.Common.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import Project.Common.*;
-import Project.Common.TextFX.Color;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public enum Client {
     INSTANCE;
+    
+    private Timer roundTimer;
+    private ClientGameUI ui;
+    private PlayerTableModel playerTableModel;
+    private final ConcurrentHashMap<Long, User> knownClients = new ConcurrentHashMap<>();
+    private final User myUser = new User();
+    private Socket server = null;
+    private ObjectOutputStream out = null;
+    private ObjectInputStream in = null;
+    private volatile boolean isRunning = true;
+    private String lastKnownAddress = null;
+    private int lastKnownPort = -1;
+    private String lastPick = "";
+    private boolean cooldownEnabled = false;
 
-    {
+    private Client() {
+        // Constructor is empty; logger is configured in start()
+    }
+    
+    public void start() {
         LoggerUtil.LoggerConfig config = new LoggerUtil.LoggerConfig();
         config.setFileSizeLimit(2048 * 1024);
         config.setFileCount(1);
         config.setLogLocation("client.log");
         LoggerUtil.INSTANCE.setConfig(config);
+        LoggerUtil.INSTANCE.info("Client Created and Logger configured.");
+    }
+    
+    public void registerUI(ClientGameUI ui) {
+        this.ui = ui;
+        this.playerTableModel = ui.getPlayerTableModel();
+        attachListeners();
     }
 
-    private Socket server = null;
-    private ObjectOutputStream out = null;
-    private ObjectInputStream in = null;
-    private volatile boolean isRunning = true;
-    private final ConcurrentHashMap<Long, User> knownClients = new ConcurrentHashMap<>();
-    private User myUser = new User();
-    private String lastKnownAddress = null;
-    private int lastKnownPort = -1;
-    private final Pattern ipAddressPattern = Pattern.compile("/connect\\s+(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}:\\d{3,5})");
-    private final Pattern localhostPattern = Pattern.compile("/connect\\s+(localhost:\\d{3,5})");
-
-    private Client() {
-        LoggerUtil.INSTANCE.info("Client Created");
+    private void attachListeners() {
+        ui.getConnectButton().addActionListener(e -> handleConnect(false));
+        ui.getSpectatorButton().addActionListener(e -> handleConnect(true));
+        ui.getReadyButton().addActionListener(e -> handleReady());
+        ui.getAwayButton().addActionListener(e -> sendCommand("/toggleaway"));
+        ui.getListRoomsButton().addActionListener(e -> sendCommand("/listrooms"));
+        ui.getCreateRoomButton().addActionListener(e -> handleCreateRoom());
+        ActionListener pickListener = e -> {
+            JButton button = (JButton) e.getSource();
+            sendPick(button.getText().toLowerCase());
+        };
+        ui.getRockButton().addActionListener(pickListener);
+        ui.getPaperButton().addActionListener(pickListener);
+        ui.getScissorsButton().addActionListener(pickListener);
+        ui.getLizardButton().addActionListener(pickListener);
+        ui.getSpockButton().addActionListener(pickListener);
     }
 
+    private void handleConnect(boolean asSpectator) {
+        if (isConnected()) {
+            logToUI("Already connected.");
+            return;
+        }
+        String host = ui.getHostField().getText().trim();
+        String portStr = ui.getPortField().getText().trim();
+        String name = ui.getNameField().getText().trim();
+        if (host.isEmpty() || portStr.isEmpty() || name.isEmpty()) {
+            logToUI("Host, Port, and Username cannot be empty.");
+            return;
+        }
+        try {
+            int port = Integer.parseInt(portStr);
+            myUser.setClientName(name);
+            myUser.setSpectator(asSpectator);
+            String status = asSpectator ? " as a spectator" : "";
+            logToUI("Connecting to " + host + ":" + port + " as " + name + status);
+            if (connect(host, port)) {
+                sendConnectionRequest(name, asSpectator);
+            } else {
+                logToUI("Connection failed. Check server and details.");
+            }
+        } catch (NumberFormatException ex) {
+            logToUI("Invalid port number.");
+        } catch (IOException ex) {
+            logToUI("Error during connection: " + ex.getMessage());
+        }
+    }
+
+    private void sendConnectionRequest(String name, boolean asSpectator) throws IOException {
+        ConnectionPayload payload = new ConnectionPayload();
+        payload.setClientName(name);
+        payload.setPayloadType(asSpectator ? PayloadType.JOIN_SPECTATOR : PayloadType.CLIENT_CONNECT);
+        sendToServer(payload);
+    }
+    
+    private void handleReady() {
+        if (myUser.isSpectator()) return;
+        
+        ReadyPayload payload = new ReadyPayload();
+        // The first player in the list is considered the host and can set rules
+        if (knownClients.size() <= 1 || knownClients.keySet().iterator().next() == myUser.getClientId()) {
+            payload.setExtraOptionsEnabled(ui.getExtraOptionsCheck().isSelected());
+            this.cooldownEnabled = ui.getCooldownCheck().isSelected(); // Update client-side rule
+            payload.setCooldownEnabled(this.cooldownEnabled);
+        }
+        
+        try {
+            sendToServer(payload);
+            ui.getReadyButton().setEnabled(false);
+        } catch (IOException e) {
+            logToUI("Error sending ready status.");
+        }
+    }
+
+    public boolean processClientCommand(String text) throws IOException {
+        if (!text.startsWith(Constants.COMMAND_TRIGGER)) return false;
+        String command = text.substring(1);
+        String[] parts = command.split(" ", 2);
+        String action = parts[0].toLowerCase();
+        String argument = (parts.length > 1) ? parts[1] : "";
+        switch (action) {
+            case "ready": handleReady(); break;
+            case "toggleaway": sendToggleAway(); break;
+            case "pick": sendGamePick(argument); break;
+            case "listrooms": sendRoomAction(argument, RoomAction.LIST); break;
+            case "createroom": sendRoomAction(argument, RoomAction.CREATE); break;
+            case "joinroom": sendRoomAction(argument, RoomAction.JOIN); break;
+            default: return false;
+        }
+        return true;
+    }
+
+    private void sendToggleAway() throws IOException {
+        Payload payload = new Payload();
+        payload.setPayloadType(PayloadType.TOGGLE_AWAY);
+        sendToServer(payload);
+    }
+    
+    private void processPayload(Payload p) {
+        SwingUtilities.invokeLater(() -> {
+            String msg = p.getMessage();
+            if (p.getPayloadType() != PayloadType.ROUND_START && msg != null && !msg.isBlank()) {
+                logToUI(msg);
+            }
+            switch (p.getPayloadType()) {
+                case CLIENT_ID:
+                    if (p instanceof ConnectionPayload cp) {
+                        myUser.setClientId(cp.getClientId());
+                        knownClients.put(myUser.getClientId(), myUser);
+                    }
+                    updatePlayerList();
+                    break;
+                case ROOM_CLEAR:
+                    knownClients.clear();
+                    if (myUser.getClientId() != Constants.DEFAULT_CLIENT_ID) {
+                        knownClients.put(myUser.getClientId(), myUser);
+                    }
+                    updatePlayerList();
+                    break;
+                case ROOM_JOIN:
+                case SYNC_CLIENT:
+                    if (p instanceof ConnectionPayload cp) {
+                        if (cp.getClientId() == Constants.DEFAULT_CLIENT_ID || cp.getClientName() == null) return;
+                        User user = knownClients.computeIfAbsent(cp.getClientId(), id -> new User());
+                        user.setClientId(cp.getClientId());
+                        user.setClientName(cp.getClientName());
+                        user.setSpectator(cp.isSpectator());
+                    }
+                    updatePlayerList();
+                    break;
+                case ROOM_LEAVE:
+                     if (p instanceof ConnectionPayload cp) {
+                        knownClients.remove(cp.getClientId());
+                     }
+                    updatePlayerList();
+                    break;
+                case ROOM_LIST:
+                    if (p instanceof RoomResultPayload rrp) {
+                        new RoomListDialog(ui.getFrame(), rrp.getRooms()).setVisible(true);
+                    }
+                    break;
+                case SYNC_POINTS:
+                    if (p instanceof PointsPayload pp) {
+                        User user = knownClients.get(pp.getClientId());
+                        if (user != null) {
+                            user.setPoints(pp.getPoints());
+                            updatePlayerList();
+                        }
+                    }
+                    break;
+                case PLAYER_STATUS:
+                    if (p instanceof PlayerStatusPayload psp) {
+                        User user = knownClients.get(psp.getClientId());
+                        if (user != null) {
+                            user.setStatus(psp.getStatus());
+                            updatePlayerList();
+                        }
+                    }
+                    break;
+                case ROUND_START:
+                    if (p instanceof RoundStartPayload rsp) {
+                        logToUI(rsp.getMessage());
+                        startRoundTimer(rsp.getRoundDurationSeconds());
+                    }
+                    ui.getReadyButton().setEnabled(false);
+                    ui.getExtraOptionsCheck().setEnabled(false);
+                    ui.getCooldownCheck().setEnabled(false);
+                    
+                    ui.getRockButton().setEnabled(true);
+                    ui.getPaperButton().setEnabled(true);
+                    ui.getScissorsButton().setEnabled(true);
+                    ui.getLizardButton().setEnabled(true);
+                    ui.getSpockButton().setEnabled(true);
+
+                    if (cooldownEnabled && lastPick != null && !lastPick.isEmpty()) {
+                        switch (lastPick) {
+                            case "rock": ui.getRockButton().setEnabled(false); break;
+                            case "paper": ui.getPaperButton().setEnabled(false); break;
+                            case "scissors": ui.getScissorsButton().setEnabled(false); break;
+                            case "lizard": ui.getLizardButton().setEnabled(false); break;
+                            case "spock": ui.getSpockButton().setEnabled(false); break;
+                        }
+                    }
+                    break;
+                case RESET_GAME_STATE:
+                    ui.getReadyButton().setEnabled(true);
+                    ui.getAwayButton().setSelected(false);
+                    ui.getExtraOptionsCheck().setSelected(false);
+                    ui.getExtraOptionsCheck().setEnabled(true);
+                    ui.getCooldownCheck().setSelected(false);
+                    ui.getCooldownCheck().setEnabled(true);
+                    lastPick = "";
+                    ui.getRockButton().setEnabled(true);
+                    ui.getPaperButton().setEnabled(true);
+                    ui.getScissorsButton().setEnabled(true);
+                    ui.getLizardButton().setEnabled(true);
+                    ui.getSpockButton().setEnabled(true);
+                    break;
+                case SESSION_END:
+                case GAME_RESULT:
+                    if(roundTimer != null) {
+                        roundTimer.stop();
+                        ui.getTimerLabel().setText("Time Remaining: --");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+    private void startRoundTimer(int seconds) {
+        if (roundTimer != null && roundTimer.isRunning()) {
+            roundTimer.stop();
+        }
+        AtomicInteger timeLeft = new AtomicInteger(seconds);
+        ui.getTimerLabel().setText("Time Remaining: " + timeLeft.get());
+        roundTimer = new Timer(1000, e -> {
+            int remaining = timeLeft.decrementAndGet();
+            ui.getTimerLabel().setText("Time Remaining: " + remaining);
+            if (remaining <= 0) {
+                ((Timer)e.getSource()).stop();
+                logToUI("Time is up!");
+                ui.getRockButton().setEnabled(false);
+                ui.getPaperButton().setEnabled(false);
+                ui.getScissorsButton().setEnabled(false);
+                ui.getLizardButton().setEnabled(false);
+                ui.getSpockButton().setEnabled(false);
+            }
+        });
+        roundTimer.start();
+    }
+    private void updatePlayerList() {
+        List<User> currentUsers = new ArrayList<>();
+        for (User user : knownClients.values()) {
+            if (user != null && user.getClientName() != null) {
+                currentUsers.add(user);
+            }
+        }
+        playerTableModel.setPlayers(currentUsers);
+    }
+    private void handleCreateRoom() {
+        String roomName = JOptionPane.showInputDialog(ui.getFrame(), "Enter new room name:", "Create Room", JOptionPane.PLAIN_MESSAGE);
+        if (roomName != null && !roomName.trim().isEmpty()) {
+            sendCommand("/createroom " + roomName.trim());
+        }
+    }
+    private void sendPick(String pick) {
+        if (myUser.isSpectator()) {
+            logToUI("Spectators can't play!");
+            return;
+        }
+        // Immediately disable all buttons to prevent multiple picks
+        ui.getRockButton().setEnabled(false);
+        ui.getPaperButton().setEnabled(false);
+        ui.getScissorsButton().setEnabled(false);
+        ui.getLizardButton().setEnabled(false);
+        ui.getSpockButton().setEnabled(false);
+        
+        // Check cooldown after disabling buttons
+        if (cooldownEnabled && pick.equals(lastPick)) {
+            logToUI("Cooldown is enabled: Can't pick the same option twice in a row!");
+            return; // We don't need to send this pick
+        }
+
+        lastPick = pick;
+        logToUI("Picked " + pick.toUpperCase());
+        sendCommand("/pick " + pick);
+    }
+    public void sendCommand(String command) {
+        try {
+            processClientCommand(command);
+        } catch (IOException e) {
+            logToUI("Error sending command: " + e.getMessage());
+        }
+    }
     public boolean isConnected() {
         return server != null && server.isConnected() && !server.isClosed()
                 && !server.isInputShutdown() && !server.isOutputShutdown();
     }
-
     private boolean connect(String address, int port) {
         try {
             this.lastKnownAddress = address;
@@ -56,354 +339,50 @@ public enum Client {
             CompletableFuture.runAsync(this::listenToServer);
         } catch (IOException e) {
             LoggerUtil.INSTANCE.warning("Failed to connect: " + e.getMessage());
+            return false;
         }
         return isConnected();
     }
-
-    private void attemptReconnect() {
-        int retries = 0;
-        while (retries < 5 && !isConnected()) {
-            try {
-                LoggerUtil.INSTANCE.info("Attempting to reconnect...");
-                connect(lastKnownAddress, lastKnownPort);
-                if (isConnected() && myUser.getClientName() != null) {
-                    sendClientName(myUser.getClientName());
-                    LoggerUtil.INSTANCE.info("Reconnected successfully");
-                    break;
+    private void listenToServer() {
+        try {
+            while (isRunning && isRunning) {
+                Payload fromServer = (Payload) in.readObject();
+                if (fromServer != null) {
+                    processPayload(fromServer);
                 }
-            } catch (Exception e) {
-                LoggerUtil.INSTANCE.warning("Reconnect failed: " + e.getMessage());
             }
-            retries++;
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+        } catch (Exception e) {
+            LoggerUtil.INSTANCE.warning("Connection dropped: " + e.getMessage());
+            logToUI("Connection to server lost.");
         }
     }
-
-    private boolean isConnection(String text) {
-        Matcher ipMatcher = ipAddressPattern.matcher(text);
-        Matcher localhostMatcher = localhostPattern.matcher(text);
-        return ipMatcher.matches() || localhostMatcher.matches();
+    private void logToUI(String message) {
+        ui.getEventLog().append(message + "\n");
+        ui.getEventLog().setCaretPosition(ui.getEventLog().getDocument().getLength());
     }
-
-    private boolean processClientCommand(String text) throws IOException {
-        boolean wasCommand = false;
-        if (text.startsWith(Constants.COMMAND_TRIGGER)) {
-            text = text.substring(1);
-            if (isConnection("/" + text)) {
-                if (myUser.getClientName() == null || myUser.getClientName().isEmpty()) {
-                    LoggerUtil.INSTANCE.warning(TextFX.colorize("Please set your name via /name <name> before connecting", Color.RED));
-                    return true;
-                }
-                String[] parts = text.trim().replaceAll(" +", " ").split(" ")[1].split(":");
-                connect(parts[0].trim(), Integer.parseInt(parts[1].trim()));
-                sendClientName(myUser.getClientName());
-                wasCommand = true;
-            } else if (text.startsWith(Command.NAME.command)) {
-                text = text.replace(Command.NAME.command, "").trim();
-                if (text.length() == 0) {
-                    LoggerUtil.INSTANCE.warning(TextFX.colorize("This command requires a name as an argument", Color.RED));
-                    return true;
-                }
-                myUser.setClientName(text);
-                LoggerUtil.INSTANCE.info(TextFX.colorize(String.format("Name set to %s", myUser.getClientName()), Color.YELLOW));
-                wasCommand = true;
-            } else if (text.equalsIgnoreCase(Command.LIST_USERS.command)) {
-                LoggerUtil.INSTANCE.info(TextFX.colorize("Known clients:", Color.CYAN));
-                knownClients.forEach((key, value) -> {
-                    LoggerUtil.INSTANCE.info(TextFX.colorize(String.format("%s%s", value.getDisplayName(),
-                            key == myUser.getClientId() ? " (you)" : ""), Color.CYAN));
-                });
-                wasCommand = true;
-            } else if (Command.QUIT.command.equalsIgnoreCase(text)) {
-                close();
-                wasCommand = true;
-            } else if (Command.DISCONNECT.command.equalsIgnoreCase(text)) {
-                sendDisconnect();
-                wasCommand = true;
-            } else if (text.startsWith(Command.REVERSE.command)) {
-                text = text.replace(Command.REVERSE.command, "").trim();
-                sendReverse(text);
-                wasCommand = true;
-            } else if (text.startsWith(Command.CREATE_ROOM.command)) {
-                text = text.replace(Command.CREATE_ROOM.command, "").trim();
-                if (text.length() == 0) {
-                    LoggerUtil.INSTANCE.warning(TextFX.colorize("This command requires a room name as an argument", Color.RED));
-                    return true;
-                }
-                sendRoomAction(text, RoomAction.CREATE);
-                wasCommand = true;
-            } else if (text.startsWith(Command.JOIN_ROOM.command)) {
-                text = text.replace(Command.JOIN_ROOM.command, "").trim();
-                if (text.length() == 0) {
-                    LoggerUtil.INSTANCE.warning(TextFX.colorize("This command requires a room name as an argument", Color.RED));
-                    return true;
-                }
-                sendRoomAction(text, RoomAction.JOIN);
-                wasCommand = true;
-            } else if (text.startsWith(Command.LEAVE_ROOM.command)) {
-                sendRoomAction(text, RoomAction.LEAVE);
-                wasCommand = true;
-            } else if (text.startsWith(Command.LIST_ROOMS.command)) {
-                text = text.replace(Command.LIST_ROOMS.command, "").trim();
-                sendRoomAction(text, RoomAction.LIST);
-                wasCommand = true;
-            } else if (text.equalsIgnoreCase(Command.READY.command)) {
-                sendGameReady();
-                wasCommand = true;
-            } else if (text.startsWith(Command.PICK.command)) {
-                text = text.replace(Command.PICK.command, "").trim();
-                if (text.isEmpty()) {
-                    LoggerUtil.INSTANCE.warning(TextFX.colorize("Usage: /pick <option>", Color.RED));
-                    return true;
-                }
-                sendGamePick(text);
-                wasCommand = true;
-            }
+    private void sendToServer(Payload payload) throws IOException {
+        if (isConnected()) {
+            out.writeObject(payload);
+            out.flush();
+        } else {
+            logToUI("Not connected to server");
         }
-        return wasCommand;
     }
-
-    private void sendRoomAction(String roomName, RoomAction action) throws IOException {
-        Payload payload = new Payload();
-        payload.setMessage(roomName);
-        switch (action) {
-            case CREATE:
-                payload.setPayloadType(PayloadType.ROOM_CREATE);
-                break;
-            case JOIN:
-                payload.setPayloadType(PayloadType.ROOM_JOIN);
-                break;
-            case LEAVE:
-                payload.setPayloadType(PayloadType.ROOM_LEAVE);
-                break;
-            case LIST:
-                payload.setPayloadType(PayloadType.ROOM_LIST);
-                break;
-        }
-        sendToServer(payload);
-    }
-
-    private void sendReverse(String msg) throws IOException {
-        Payload payload = new Payload();
-        payload.setMessage(msg);
-        payload.setPayloadType(PayloadType.REVERSE);
-        sendToServer(payload);
-    }
-
-    private void sendDisconnect() throws IOException {
-        Payload payload = new Payload();
-        payload.setPayloadType(PayloadType.DISCONNECT);
-        sendToServer(payload);
-    }
-
-    private void sendMessage(String msg) throws IOException {
-        Payload payload = new Payload();
-        payload.setMessage(msg);
-        payload.setPayloadType(PayloadType.MESSAGE);
-        sendToServer(payload);
-    }
-
-    private void sendClientName(String name) throws IOException {
-        ConnectionPayload payload = new ConnectionPayload();
-        payload.setClientName(name);
-        payload.setPayloadType(PayloadType.CLIENT_CONNECT);
-        sendToServer(payload);
-    }
-
-    // Sends READY payload to notify player is ready
-    private void sendGameReady() throws IOException {
-        Payload payload = new Payload();
-        payload.setPayloadType(PayloadType.GAME_READY);
-        sendToServer(payload);
-    }
-
-    // Sends PICK payload with player's chosen move
     private void sendGamePick(String choice) throws IOException {
         Payload payload = new Payload();
         payload.setPayloadType(PayloadType.GAME_PICK);
         payload.setMessage(choice);
         sendToServer(payload);
     }
-
-    private void sendToServer(Payload payload) throws IOException {
-        if (isConnected()) {
-            out.writeObject(payload);
-            out.flush();
-        } else {
-            LoggerUtil.INSTANCE.warning("Not connected to server");
+     private void sendRoomAction(String roomName, RoomAction action) throws IOException {
+        Payload payload = new Payload();
+        payload.setMessage(roomName);
+        switch (action) {
+            case CREATE: payload.setPayloadType(PayloadType.ROOM_CREATE); break;
+            case JOIN: payload.setPayloadType(PayloadType.ROOM_JOIN); break;
+            case LIST: payload.setPayloadType(PayloadType.ROOM_LIST); break;
+            case LEAVE: payload.setPayloadType(PayloadType.ROOM_LEAVE); break;
         }
-    }
-
-    public void start() throws IOException {
-        LoggerUtil.INSTANCE.info("Client starting");
-        CompletableFuture<Void> inputFuture = CompletableFuture.runAsync(this::listenToInput);
-        inputFuture.join();
-    }
-
-    private void listenToServer() {
-        try {
-            while (isRunning && isConnected()) {
-                Payload fromServer = (Payload) in.readObject();
-                if (fromServer != null) {
-                    processPayload(fromServer);
-                } else {
-                    LoggerUtil.INSTANCE.info("Server disconnected");
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            LoggerUtil.INSTANCE.warning("Connection dropped: " + e.getMessage());
-        } finally {
-            closeServerConnection();
-            if (isRunning) {
-                attemptReconnect();
-            }
-        }
-        LoggerUtil.INSTANCE.info("listenToServer thread stopped");
-    }
-
-    private void processPayload(Payload p) {
-        switch (p.getPayloadType()) {
-            case CLIENT_CONNECT:
-                break;
-            case CLIENT_ID:
-                processClientData(p);
-                break;
-            case DISCONNECT:
-                processDisconnect(p);
-                break;
-            case MESSAGE:
-                LoggerUtil.INSTANCE.info(TextFX.colorize(p.getMessage(), Color.BLUE));
-                break;
-            case REVERSE:
-                LoggerUtil.INSTANCE.info(TextFX.colorize(p.getMessage(), Color.PURPLE));
-                break;
-            case ROOM_JOIN:
-            case ROOM_LEAVE:
-            case SYNC_CLIENT:
-                processRoomAction(p);
-                break;
-            case ROOM_LIST:
-                processRoomsList(p);
-                break;
-            case GAME_RESULT:
-            case GAME_STATE:
-            case ROUND_START:
-            case ROUND_END:
-            case PLAYER_ELIMINATED:
-            case SCOREBOARD:
-            case SESSION_START:
-            case SESSION_END:
-                LoggerUtil.INSTANCE.info(TextFX.colorize(p.getMessage(), Color.GREEN));
-                break;
-            default:
-                LoggerUtil.INSTANCE.warning(TextFX.colorize("Unhandled payload type", Color.YELLOW));
-        }
-    }
-
-    private void processClientData(Payload p) {
-        if (myUser.getClientId() != Constants.DEFAULT_CLIENT_ID) {
-            LoggerUtil.INSTANCE.warning(TextFX.colorize("Client ID already set", Color.YELLOW));
-        }
-        myUser.setClientId(p.getClientId());
-        myUser.setClientName(((ConnectionPayload) p).getClientName());
-        knownClients.put(myUser.getClientId(), myUser);
-        LoggerUtil.INSTANCE.info(TextFX.colorize("Connected", Color.GREEN));
-    }
-
-    private void processDisconnect(Payload p) {
-        if (p.getClientId() == myUser.getClientId()) {
-            knownClients.clear();
-            myUser.reset();
-            LoggerUtil.INSTANCE.info(TextFX.colorize("You disconnected", Color.RED));
-        } else {
-            User u = knownClients.remove(p.getClientId());
-            if (u != null) {
-                LoggerUtil.INSTANCE.info(TextFX.colorize(u.getDisplayName() + " disconnected", Color.RED));
-            }
-        }
-    }
-
-    private void processRoomAction(Payload p) {
-        if (!(p instanceof ConnectionPayload)) return;
-        ConnectionPayload cp = (ConnectionPayload) p;
-        if (cp.getClientId() == Constants.DEFAULT_CLIENT_ID) {
-            knownClients.clear();
-            return;
-        }
-        switch (cp.getPayloadType()) {
-            case ROOM_LEAVE:
-                knownClients.remove(cp.getClientId());
-                if (cp.getMessage() != null)
-                    LoggerUtil.INSTANCE.info(TextFX.colorize(cp.getMessage(), Color.YELLOW));
-                break;
-            case ROOM_JOIN:
-                if (cp.getMessage() != null)
-                    LoggerUtil.INSTANCE.info(TextFX.colorize(cp.getMessage(), Color.GREEN));
-            case SYNC_CLIENT:
-                if (!knownClients.containsKey(cp.getClientId())) {
-                    User u = new User();
-                    u.setClientId(cp.getClientId());
-                    u.setClientName(cp.getClientName());
-                    knownClients.put(cp.getClientId(), u);
-                }
-                break;
-            default:
-                LoggerUtil.INSTANCE.warning("Invalid payload for room action");
-        }
-    }
-
-    private void processRoomsList(Payload p) {
-        if (!(p instanceof RoomResultPayload)) return;
-        List<String> rooms = ((RoomResultPayload) p).getRooms();
-        if (rooms == null || rooms.isEmpty()) {
-            LoggerUtil.INSTANCE.warning(TextFX.colorize("No rooms found", Color.RED));
-            return;
-        }
-        LoggerUtil.INSTANCE.info(TextFX.colorize("Room Results:", Color.PURPLE));
-        LoggerUtil.INSTANCE.info(String.join("\n", rooms));
-    }
-
-    private void listenToInput() {
-        try (Scanner si = new Scanner(System.in)) {
-            LoggerUtil.INSTANCE.info("Waiting for input");
-            while (isRunning) {
-                String input = si.nextLine();
-                if (!processClientCommand(input)) {
-                    sendMessage(input);
-                }
-            }
-        } catch (IOException e) {
-            LoggerUtil.INSTANCE.severe("Error in listenToInput", e);
-        }
-    }
-
-    private void close() {
-        isRunning = false;
-        closeServerConnection();
-        LoggerUtil.INSTANCE.info("Client terminated");
-    }
-
-    private void closeServerConnection() {
-        try {
-            if (out != null) out.close();
-            if (in != null) in.close();
-            if (server != null) server.close();
-        } catch (IOException e) {
-            LoggerUtil.INSTANCE.severe("Error closing connection", e);
-        }
-    }
-
-    public static void main(String[] args) {
-        Client client = Client.INSTANCE;
-        try {
-            client.start();
-        } catch (IOException e) {
-            LoggerUtil.INSTANCE.severe("Exception in main()", e);
-        }
+        sendToServer(payload);
     }
 }

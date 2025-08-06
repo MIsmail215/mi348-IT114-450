@@ -2,17 +2,20 @@ package Project.Common;
 
 public class ConnectionPayload extends Payload {
     private String clientName;
+    private boolean isSpectator;
 
-    /**
-     * @return the clientName
-     */
+    public boolean isSpectator() {
+        return isSpectator;
+    }
+
+    public void setSpectator(boolean spectator) {
+        isSpectator = spectator;
+    }
+    
     public String getClientName() {
         return clientName;
     }
-
-    /**
-     * @param clientName the clientName to set
-     */
+    
     public void setClientName(String clientName) {
         this.clientName = clientName;
     }
@@ -23,5 +26,4 @@ public class ConnectionPayload extends Payload {
                 String.format(" ClientName: [%s]",
                         getClientName());
     }
-
 }

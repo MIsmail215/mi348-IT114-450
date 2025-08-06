@@ -1,43 +1,41 @@
 package Project.Common;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private long clientId = Constants.DEFAULT_CLIENT_ID;
     private String clientName;
+    private int points = 0;
+    private PlayerStatus status = PlayerStatus.ACTIVE;
+    private boolean isSpectator = false;
 
-    /**
-     * @return the clientId
-     */
-    public long getClientId() {
-        return clientId;
+    public boolean isSpectator() {
+        return isSpectator;
     }
 
-    /**
-     * @param clientId the clientId to set
-     */
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
+    public void setSpectator(boolean spectator) {
+        isSpectator = spectator;
+        if (spectator) {
+            this.status = PlayerStatus.SPECTATING;
+        }
     }
 
-    /**
-     * @return the username
-     */
-    public String getClientName() {
-        return clientName;
-    }
-
-    /**
-     * @param username the username to set
-     */
-    public void setClientName(String username) {
-        this.clientName = username;
-    }
-
-    public String getDisplayName() {
-        return String.format("%s#%s", this.clientName, this.clientId);
-    }
-
+    public long getClientId() { return clientId; }
+    public void setClientId(long clientId) { this.clientId = clientId; }
+    public String getClientName() { return clientName; }
+    public void setClientName(String username) { this.clientName = username; }
+    public int getPoints() { return points; }
+    public void setPoints(int points) { this.points = points; }
+    public PlayerStatus getStatus() { return status; }
+    public void setStatus(PlayerStatus status) { this.status = status; }
+    public String getDisplayName() { return String.format("%s#%s", this.clientName, this.clientId); }
     public void reset() {
         this.clientId = Constants.DEFAULT_CLIENT_ID;
         this.clientName = null;
+        this.points = 0;
+        this.status = PlayerStatus.ACTIVE;
+        this.isSpectator = false;
     }
 }

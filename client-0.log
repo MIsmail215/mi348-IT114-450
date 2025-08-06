@@ -1,0 +1,1748 @@
+07/21/2025 15:27:29 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+07/21/2025 15:27:29 [Project.Client.Client] ([32mINFO[0m):
+> Client starting
+07/21/2025 15:27:29 [Project.Client.Client] ([32mINFO[0m):
+> Waiting for input
+07/21/2025 15:34:57 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+07/21/2025 15:34:57 [Project.Client.Client] ([32mINFO[0m):
+> Client starting
+07/21/2025 15:34:57 [Project.Client.Client] ([32mINFO[0m):
+> Waiting for input
+07/21/2025 15:35:29 [Project.Client.Client] ([33mWARNING[0m):
+> [0;31mPlease set your name via /name <name> before connecting[0m
+07/21/2025 15:35:34 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to Mukaddis[0m
+07/21/2025 15:35:36 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+07/21/2025 15:35:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mConnected[0m
+07/21/2025 15:35:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] Mukaddis#1 joined the room[0m
+07/21/2025 15:36:43 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] Jason#2 joined the room[0m
+07/21/2025 15:41:30 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame] Mukaddis#1 joined the room[0m
+07/21/2025 15:41:41 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame] Jason#2 joined the room[0m
+07/21/2025 15:41:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Thread-3 is ready (1/2)[0m
+07/21/2025 15:42:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Thread-1 is ready (2/2)[0m
+07/21/2025 15:42:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+07/21/2025 15:42:09 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis has locked in their pick.[0m
+07/21/2025 15:42:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason has locked in their pick.[0m
+07/21/2025 15:42:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis(r) vs Jason(s) -> Mukaddis wins[0m
+07/21/2025 15:42:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason(s) vs Mukaddis(r) -> Mukaddis wins[0m
+07/21/2025 15:42:12 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 15:42:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+07/21/2025 15:42:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis has locked in their pick.[0m
+07/21/2025 15:42:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason has locked in their pick.[0m
+07/21/2025 15:42:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis(p) vs Jason(p) -> Tie[0m
+07/21/2025 15:42:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason(p) vs Mukaddis(p) -> Tie[0m
+07/21/2025 15:42:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Starting Round 3. Make your pick: /pick <r|p|s>[0m
+07/21/2025 15:42:32 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis has locked in their pick.[0m
+07/21/2025 15:42:35 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason has locked in their pick.[0m
+07/21/2025 15:42:35 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis(r) vs Jason(p) -> Jason wins[0m
+07/21/2025 15:42:35 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason(p) vs Mukaddis(r) -> Jason wins[0m
+07/21/2025 15:42:35 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 15:42:35 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Starting Round 4. Make your pick: /pick <r|p|s>[0m
+07/21/2025 15:42:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis has locked in their pick.[0m
+07/21/2025 15:42:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason has locked in their pick.[0m
+07/21/2025 15:42:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis(s) vs Jason(s) -> Tie[0m
+07/21/2025 15:42:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason(s) vs Mukaddis(s) -> Tie[0m
+07/21/2025 15:42:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Starting Round 5. Make your pick: /pick <r|p|s>[0m
+07/21/2025 15:43:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis was eliminated (no pick)[0m
+07/21/2025 15:43:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason was eliminated (no pick)[0m
+07/21/2025 15:43:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Game ended in a tie. No players remain.[0m
+07/21/2025 15:43:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: == FINAL SCORES ==[0m
+07/21/2025 15:43:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Mukaddis - 1 point(s)[0m
+07/21/2025 15:43:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason - 1 point(s)[0m
+07/21/2025 16:53:32 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mMukaddis#1: [0m
+07/21/2025 16:53:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mJason#2: [0m
+07/21/2025 16:53:34 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mMukaddis#1: [0m
+07/21/2025 16:53:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mMukaddis#1: hey jason[0m
+07/21/2025 16:53:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mJason#2: hi[0m
+07/21/2025 16:53:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mMukaddis#1: wyd[0m
+07/21/2025 16:53:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mJason#2: waiting for TERRY to join [0m
+07/21/2025 17:01:54 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[Testgame]: Jason#2 disconnected[0m
+07/21/2025 17:02:12 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+07/21/2025 17:02:12 [Project.Client.Client] ([32mINFO[0m):
+> Client starting
+07/21/2025 17:02:12 [Project.Client.Client] ([32mINFO[0m):
+> Waiting for input
+07/21/2025 17:02:41 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to Mukaddis[0m
+07/21/2025 17:03:07 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+07/21/2025 17:03:07 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mConnected[0m
+07/21/2025 17:03:07 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[lobby] Mukaddis#3 joined the room[0m
+07/21/2025 17:05:09 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING] Mukaddis#3 joined the room[0m
+07/21/2025 17:05:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING] Terry#2 joined the room[0m
+07/21/2025 17:05:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING] Johnathan#1 joined the room[0m
+07/21/2025 17:05:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mJohnathan#1: /lsitrooms[0m
+07/21/2025 17:05:41 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Thread-5 is ready (1/3)[0m
+07/21/2025 17:05:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Thread-3 is ready (2/3)[0m
+07/21/2025 17:05:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Thread-1 is ready (3/3)[0m
+07/21/2025 17:05:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:05:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:05:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:06:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:06:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(s) vs Terry(p) -> Johnathan wins[0m
+07/21/2025 17:06:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(p) vs Mukaddis(r) -> Terry wins[0m
+07/21/2025 17:06:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(r) vs Johnathan(s) -> Mukaddis wins[0m
+07/21/2025 17:06:05 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:06:05 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:06:05 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:06:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:06:26 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:06:29 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:06:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:06:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(p) vs Terry(p) -> Tie[0m
+07/21/2025 17:06:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(p) vs Mukaddis(p) -> Tie[0m
+07/21/2025 17:06:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(p) vs Johnathan(p) -> Tie[0m
+07/21/2025 17:06:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 3. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:07:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:07:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan was eliminated (no pick)[0m
+07/21/2025 17:07:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry was eliminated (no pick)[0m
+07/21/2025 17:07:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis is the winner![0m
+07/21/2025 17:07:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: == FINAL SCORES ==[0m
+07/21/2025 17:07:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan - 1 point(s)[0m
+07/21/2025 17:07:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry - 1 point(s)[0m
+07/21/2025 17:07:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis - 1 point(s)[0m
+07/21/2025 17:07:07 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mGame has not started. Type /ready first.[0m
+07/21/2025 17:07:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Thread-5 is ready (1/3)[0m
+07/21/2025 17:07:25 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Thread-3 is ready (2/3)[0m
+07/21/2025 17:07:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Thread-1 is ready (3/3)[0m
+07/21/2025 17:07:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:07:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:07:34 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:07:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:07:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(s) vs Terry(s) -> Tie[0m
+07/21/2025 17:07:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(s) vs Mukaddis(r) -> Mukaddis wins[0m
+07/21/2025 17:07:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(r) vs Johnathan(s) -> Mukaddis wins[0m
+07/21/2025 17:07:36 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:07:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:07:41 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:07:43 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:07:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:07:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(s) vs Terry(s) -> Tie[0m
+07/21/2025 17:07:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(s) vs Mukaddis(r) -> Mukaddis wins[0m
+07/21/2025 17:07:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(r) vs Johnathan(s) -> Mukaddis wins[0m
+07/21/2025 17:07:46 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:07:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 3. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:07:50 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:07:53 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:07:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:07:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(s) vs Terry(p) -> Johnathan wins[0m
+07/21/2025 17:07:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(p) vs Mukaddis(r) -> Terry wins[0m
+07/21/2025 17:07:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(r) vs Johnathan(s) -> Mukaddis wins[0m
+07/21/2025 17:07:57 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:07:57 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:07:57 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:07:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 4. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:08:00 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:08:03 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:08:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:08:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(s) vs Terry(p) -> Johnathan wins[0m
+07/21/2025 17:08:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(p) vs Mukaddis(r) -> Terry wins[0m
+07/21/2025 17:08:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(r) vs Johnathan(s) -> Mukaddis wins[0m
+07/21/2025 17:08:05 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:08:05 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:08:05 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:08:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 5. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:08:09 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:08:11 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:08:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:08:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(s) vs Terry(s) -> Tie[0m
+07/21/2025 17:08:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(s) vs Mukaddis(p) -> Terry wins[0m
+07/21/2025 17:08:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(p) vs Johnathan(s) -> Johnathan wins[0m
+07/21/2025 17:08:14 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:08:14 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:08:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 6. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:08:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:08:20 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:08:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:08:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(r) vs Terry(r) -> Tie[0m
+07/21/2025 17:08:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(r) vs Mukaddis(r) -> Tie[0m
+07/21/2025 17:08:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(r) vs Johnathan(r) -> Tie[0m
+07/21/2025 17:08:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 7. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:08:30 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:08:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:08:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:08:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(s) vs Terry(p) -> Johnathan wins[0m
+07/21/2025 17:08:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(p) vs Mukaddis(r) -> Terry wins[0m
+07/21/2025 17:08:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(r) vs Johnathan(s) -> Mukaddis wins[0m
+07/21/2025 17:08:36 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:08:36 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:08:36 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:08:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 8. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:08:39 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:08:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:08:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:08:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(p) vs Terry(p) -> Tie[0m
+07/21/2025 17:08:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(p) vs Mukaddis(p) -> Tie[0m
+07/21/2025 17:08:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(p) vs Johnathan(p) -> Tie[0m
+07/21/2025 17:08:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 9. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:08:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:08:50 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:08:52 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:08:52 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(r) vs Terry(r) -> Tie[0m
+07/21/2025 17:08:52 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(r) vs Mukaddis(p) -> Mukaddis wins[0m
+07/21/2025 17:08:52 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(p) vs Johnathan(r) -> Mukaddis wins[0m
+07/21/2025 17:08:52 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:08:52 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 10. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:08:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:09:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:09:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:09:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(r) vs Terry(r) -> Tie[0m
+07/21/2025 17:09:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(r) vs Mukaddis(r) -> Tie[0m
+07/21/2025 17:09:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(r) vs Johnathan(r) -> Tie[0m
+07/21/2025 17:09:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 11. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:09:10 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis has locked in their pick.[0m
+07/21/2025 17:09:13 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry has locked in their pick.[0m
+07/21/2025 17:09:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan has locked in their pick.[0m
+07/21/2025 17:09:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan(s) vs Terry(s) -> Tie[0m
+07/21/2025 17:09:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry(s) vs Mukaddis(r) -> Mukaddis wins[0m
+07/21/2025 17:09:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis(r) vs Johnathan(s) -> Mukaddis wins[0m
+07/21/2025 17:09:16 [Project.Client.Client] ([33mWARNING[0m):
+> [0;33mUnhandled payload type[0m
+07/21/2025 17:09:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Starting Round 12. Make your pick: /pick <r|p|s>[0m
+07/21/2025 17:09:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan was eliminated (no pick)[0m
+07/21/2025 17:09:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry was eliminated (no pick)[0m
+07/21/2025 17:09:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis was eliminated (no pick)[0m
+07/21/2025 17:09:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Game ended in a tie. No players remain.[0m
+07/21/2025 17:09:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: == FINAL SCORES ==[0m
+07/21/2025 17:09:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Mukaddis - 7 point(s)[0m
+07/21/2025 17:09:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Johnathan - 4 point(s)[0m
+07/21/2025 17:09:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;34mRoom[TESTING]: Terry - 4 point(s)[0m
+07/26/2025 20:27:21 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: Connection reset
+07/26/2025 20:27:22 [Project.Client.Client] ([32mINFO[0m):
+> Attempting to reconnect...
+07/26/2025 20:27:22 [Project.Client.Client] ([33mWARNING[0m):
+> Failed to connect: Connection refused: connect
+08/03/2025 15:11:07 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:11:49 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:50 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:51 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:52 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:52 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:11:52 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:12:44 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:12:57 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:13:05 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:27:11 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:27:18 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:31:18 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:31:22 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:31:25 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:31:37 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:32:34 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:37:22 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:37:34 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 15:37:37 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 15:37:41 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:19:10 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:24:11 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:24:59 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:26:35 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:26:53 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:27:02 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:27:06 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:42:19 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:42:21 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 16:42:22 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 16:42:43 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 16:48:12 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:49:42 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:50:47 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:55:06 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 16:55:09 [Project.Client.Client] ([33mWARNING[0m):
+> Not connected to server
+08/03/2025 17:14:11 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 17:17:41 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 17:29:04 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 17:29:49 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 17:29:50 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to YourName[0m
+08/03/2025 17:29:50 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/03/2025 17:29:51 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 17:29:51 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 17:29:51 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 17:29:51 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] YourName#1 joined the room[0m
+08/03/2025 17:30:00 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-1 is ready (1/1)[0m
+08/03/2025 17:30:00 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/03/2025 17:30:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: r, p, or s.[0m
+08/03/2025 17:30:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: r, p, or s.[0m
+08/03/2025 17:30:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: r, p, or s.[0m
+08/03/2025 17:30:13 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 17:30:20 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to Mukaddis[0m
+08/03/2025 17:30:20 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/03/2025 17:30:20 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 17:30:20 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 17:30:20 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 17:30:20 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] Mukaddis#2 joined the room[0m
+08/03/2025 17:30:30 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: null was eliminated (no pick)[0m
+08/03/2025 17:30:30 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Game ended in a tie. No players remain.[0m
+08/03/2025 17:30:30 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: == FINAL SCORES ==[0m
+08/03/2025 17:30:30 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: null - 0 point(s)[0m
+08/03/2025 17:30:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 17:30:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] Joe#3 joined the room[0m
+08/03/2025 17:30:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-5 is ready (1/2)[0m
+08/03/2025 17:30:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-3 is ready (2/2)[0m
+08/03/2025 17:30:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/03/2025 17:30:50 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: r, p, or s.[0m
+08/03/2025 17:31:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: r, p, or s.[0m
+08/03/2025 17:31:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis was eliminated (no pick)[0m
+08/03/2025 17:31:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Joe was eliminated (no pick)[0m
+08/03/2025 17:31:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Game ended in a tie. No players remain.[0m
+08/03/2025 17:31:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: == FINAL SCORES ==[0m
+08/03/2025 17:31:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis - 0 point(s)[0m
+08/03/2025 17:31:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Joe - 0 point(s)[0m
+08/03/2025 19:34:04 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 19:34:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to YourName[0m
+08/03/2025 19:34:06 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/03/2025 19:34:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:34:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:34:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:34:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:34:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] YourName#4 joined the room[0m
+08/03/2025 19:34:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:34:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Joe#3 disconnected[0m
+08/03/2025 19:34:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:34:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] dawdawsd#5 joined the room[0m
+08/03/2025 19:34:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-9 is ready (1/2)[0m
+08/03/2025 19:34:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-7 is ready (2/2)[0m
+08/03/2025 19:34:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/03/2025 19:34:49 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: r, p, or s.[0m
+08/03/2025 19:35:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: YourName was eliminated (no pick)[0m
+08/03/2025 19:35:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: dawdawsd was eliminated (no pick)[0m
+08/03/2025 19:35:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Game ended in a tie. No players remain.[0m
+08/03/2025 19:35:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: == FINAL SCORES ==[0m
+08/03/2025 19:35:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: YourName - 0 point(s)[0m
+08/03/2025 19:35:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: dawdawsd - 0 point(s)[0m
+08/03/2025 19:42:19 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 19:42:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to YourName[0m
+08/03/2025 19:42:21 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/03/2025 19:42:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:42:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:42:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:42:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:42:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] YourName#6 joined the room[0m
+08/03/2025 19:42:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:42:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: dawdawsd#5 disconnected[0m
+08/03/2025 19:42:30 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:42:30 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] bauidbs#7 joined the room[0m
+08/03/2025 19:42:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-13 is ready (1/2)[0m
+08/03/2025 19:42:37 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-11 is ready (2/2)[0m
+08/03/2025 19:42:37 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/03/2025 19:42:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 19:42:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: bauidbs#7 disconnected[0m
+08/03/2025 19:59:59 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 20:00:16 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 20:00:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to Mukaddis[0m
+08/03/2025 20:00:23 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/03/2025 20:00:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:00:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:00:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:00:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] Mukaddis#1 joined the room[0m
+08/03/2025 20:00:32 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:00:32 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] Safwaan#2 joined the room[0m
+08/03/2025 20:00:37 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-3 is ready (1/2)[0m
+08/03/2025 20:00:39 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-1 is ready (2/2)[0m
+08/03/2025 20:00:39 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/03/2025 20:00:40 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan has locked in their pick.[0m
+08/03/2025 20:00:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis has locked in their pick.[0m
+08/03/2025 20:00:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis(paper) vs Safwaan(rock) -> Safwaan wins[0m
+08/03/2025 20:00:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan(rock) vs Mukaddis(paper) -> Mukaddis wins[0m
+08/03/2025 20:00:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:00:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:00:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+08/03/2025 20:01:00 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan has locked in their pick.[0m
+08/03/2025 20:01:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis has locked in their pick.[0m
+08/03/2025 20:01:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis(rock) vs Safwaan(paper) -> Safwaan wins[0m
+08/03/2025 20:01:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan(paper) vs Mukaddis(rock) -> Mukaddis wins[0m
+08/03/2025 20:01:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:01:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:01:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 3. Make your pick: /pick <r|p|s>[0m
+08/03/2025 20:01:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis has locked in their pick.[0m
+08/03/2025 20:01:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan has locked in their pick.[0m
+08/03/2025 20:01:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis(paper) vs Safwaan(rock) -> Safwaan wins[0m
+08/03/2025 20:01:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan(rock) vs Mukaddis(paper) -> Mukaddis wins[0m
+08/03/2025 20:01:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:01:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:01:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 4. Make your pick: /pick <r|p|s>[0m
+08/03/2025 20:01:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis has locked in their pick.[0m
+08/03/2025 20:01:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: rock, paper, or scissors.[0m
+08/03/2025 20:01:29 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mYou've already picked.[0m
+08/03/2025 20:01:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan has locked in their pick.[0m
+08/03/2025 20:01:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis(rock) vs Safwaan(paper) -> Safwaan wins[0m
+08/03/2025 20:01:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan(paper) vs Mukaddis(rock) -> Mukaddis wins[0m
+08/03/2025 20:01:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:01:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:01:33 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 5. Make your pick: /pick <r|p|s>[0m
+08/03/2025 20:01:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan has locked in their pick.[0m
+08/03/2025 20:01:39 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: rock, paper, or scissors.[0m
+08/03/2025 20:02:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis was eliminated (no pick)[0m
+08/03/2025 20:02:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan is the winner![0m
+08/03/2025 20:02:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: == FINAL SCORES ==[0m
+08/03/2025 20:02:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Mukaddis - 4 point(s)[0m
+08/03/2025 20:02:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Safwaan - 4 point(s)[0m
+08/03/2025 20:05:39 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/03/2025 20:05:57 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 20:06:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to BatMan[0m
+08/03/2025 20:06:12 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/03/2025 20:06:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:06:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:06:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:06:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:06:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] BatMan#2 joined the room[0m
+08/03/2025 20:06:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-1 is ready (1/2)[0m
+08/03/2025 20:06:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-3 is ready (2/2)[0m
+08/03/2025 20:06:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/03/2025 20:06:25 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatGirl has locked in their pick.[0m
+08/03/2025 20:06:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: rock, paper, or scissors.[0m
+08/03/2025 20:06:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatMan has locked in their pick.[0m
+08/03/2025 20:06:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatGirl(paper) vs BatMan(paper) -> Tie[0m
+08/03/2025 20:06:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatMan(paper) vs BatGirl(paper) -> Tie[0m
+08/03/2025 20:06:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+08/03/2025 20:06:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatGirl has locked in their pick.[0m
+08/03/2025 20:06:47 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: rock, paper, or scissors.[0m
+08/03/2025 20:07:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatMan was eliminated (no pick)[0m
+08/03/2025 20:07:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatGirl is the winner![0m
+08/03/2025 20:07:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: == FINAL SCORES ==[0m
+08/03/2025 20:07:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatGirl - 0 point(s)[0m
+08/03/2025 20:07:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatMan - 0 point(s)[0m
+08/03/2025 20:08:30 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/03/2025 20:08:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to BatGirl[0m
+08/03/2025 20:08:45 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/03/2025 20:08:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:08:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:08:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:08:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/03/2025 20:08:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby] BatGirl#2 joined the room[0m
+08/03/2025 20:08:47 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-1 is ready (1/2)[0m
+08/03/2025 20:08:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Thread-3 is ready (2/2)[0m
+08/03/2025 20:08:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/03/2025 20:08:55 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mInvalid pick. Use: rock, paper, or scissors.[0m
+08/03/2025 20:09:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatMan was eliminated (no pick)[0m
+08/03/2025 20:09:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatGirl was eliminated (no pick)[0m
+08/03/2025 20:09:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: Game ended in a tie. No players remain.[0m
+08/03/2025 20:09:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: == FINAL SCORES ==[0m
+08/03/2025 20:09:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatMan - 0 point(s)[0m
+08/03/2025 20:09:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mRoom[lobby]: BatGirl - 0 point(s)[0m
+08/03/2025 20:10:13 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 11:08:06 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 11:08:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to dawdas[0m
+08/04/2025 11:08:12 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 11:08:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 11:08:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 11:08:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 11:08:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby] dawdas#1 joined the room[0m
+08/04/2025 11:08:19 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 11:08:19 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby] mammaam#2 joined the room[0m
+08/04/2025 11:08:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby]: Thread-3 is ready (1/2)[0m
+08/04/2025 11:08:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby]: Thread-1 is ready (2/2)[0m
+08/04/2025 11:08:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/04/2025 11:08:29 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Invalid pick. Use: rock, paper, or scissors.[0m
+08/04/2025 11:08:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby]: dawdas was eliminated (no pick)[0m
+08/04/2025 11:08:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby]: mammaam was eliminated (no pick)[0m
+08/04/2025 11:08:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby]: Game ended in a tie. No players remain.[0m
+08/04/2025 11:08:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby]: == FINAL SCORES ==[0m
+08/04/2025 11:08:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby]: dawdas - 0 point(s)[0m
+08/04/2025 11:08:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdas]: Room[lobby]: mammaam - 0 point(s)[0m
+08/04/2025 11:11:06 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 11:11:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to mdmdma[0m
+08/04/2025 11:11:28 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 11:11:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 11:11:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 11:11:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 11:11:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 11:11:28 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby] mdmdma#4 joined the room[0m
+08/04/2025 11:11:29 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: Thread-7 is ready (1/2)[0m
+08/04/2025 11:11:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: Thread-5 is ready (2/2)[0m
+08/04/2025 11:11:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/04/2025 11:11:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Invalid pick. Use: rock, paper, or scissors.[0m
+08/04/2025 11:12:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: YourNdwuiame was eliminated (no pick)[0m
+08/04/2025 11:12:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: mdmdma was eliminated (no pick)[0m
+08/04/2025 11:12:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: Game ended in a tie. No players remain.[0m
+08/04/2025 11:12:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: == FINAL SCORES ==[0m
+08/04/2025 11:12:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: YourNdwuiame - 0 point(s)[0m
+08/04/2025 11:12:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: mdmdma - 0 point(s)[0m
+08/04/2025 15:13:37 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 15:13:37 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mdmdma]: Room[lobby]: YourNdwuiame#3 disconnected[0m
+08/04/2025 15:13:37 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/04/2025 15:13:54 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 15:14:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to adasdwa[0m
+08/04/2025 15:14:05 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 15:14:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 15:14:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 15:14:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 15:14:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 15:14:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[adasdwa]: Room[lobby] adasdwa#2 joined the room[0m
+08/04/2025 15:27:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 15:27:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[adasdwa]: Room[lobby]: YourName#1 disconnected[0m
+08/04/2025 15:27:56 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/04/2025 15:38:16 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 16:09:43 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 16:10:09 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 16:10:13 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to dwa[0m
+08/04/2025 16:10:13 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 16:10:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:10:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:10:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:10:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby] dwa#1 joined the room[0m
+08/04/2025 16:10:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:10:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby] YourName#2 joined the room[0m
+08/04/2025 16:10:20 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby]: Thread-3 is ready (1/2)[0m
+08/04/2025 16:10:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby]: Thread-1 is ready (2/2)[0m
+08/04/2025 16:10:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/04/2025 16:10:26 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby]: YourName has locked in their pick.[0m
+08/04/2025 16:10:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby]: dwa has locked in their pick.[0m
+08/04/2025 16:10:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby]: dwa(paper) vs YourName(rock) -> YourName wins[0m
+08/04/2025 16:10:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby]: YourName(rock) vs dwa(paper) -> dwa wins[0m
+08/04/2025 16:10:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:10:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:10:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+08/04/2025 16:10:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:10:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwa]: Room[lobby]: YourName#2 disconnected[0m
+08/04/2025 16:29:36 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 16:29:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to YourName[0m
+08/04/2025 16:29:38 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 16:29:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:29:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:29:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:29:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#3 joined the room[0m
+08/04/2025 16:29:47 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:29:47 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] wadasd#4 joined the room[0m
+08/04/2025 16:29:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-7 is ready (1/2)[0m
+08/04/2025 16:29:54 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-5 is ready (2/2)[0m
+08/04/2025 16:29:54 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/04/2025 16:29:55 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: wadasd has locked in their pick.[0m
+08/04/2025 16:29:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName has locked in their pick.[0m
+08/04/2025 16:29:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName(paper) vs wadasd(rock) -> wadasd wins[0m
+08/04/2025 16:29:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: wadasd(rock) vs YourName(paper) -> YourName wins[0m
+08/04/2025 16:29:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:29:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:29:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+08/04/2025 16:30:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Invalid pick. Use: rock, paper, or scissors.[0m
+08/04/2025 16:30:07 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName has locked in their pick.[0m
+08/04/2025 16:30:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: wadasd has locked in their pick.[0m
+08/04/2025 16:30:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName(rock) vs wadasd(paper) -> wadasd wins[0m
+08/04/2025 16:30:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: wadasd(paper) vs YourName(rock) -> YourName wins[0m
+08/04/2025 16:30:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:30:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:30:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Starting Round 3. Make your pick: /pick <r|p|s>[0m
+08/04/2025 16:30:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName was eliminated (no pick)[0m
+08/04/2025 16:30:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: wadasd was eliminated (no pick)[0m
+08/04/2025 16:30:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Game ended in a tie. No players remain.[0m
+08/04/2025 16:30:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: == FINAL SCORES ==[0m
+08/04/2025 16:30:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName - 2 point(s)[0m
+08/04/2025 16:30:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: wadasd - 2 point(s)[0m
+08/04/2025 16:31:54 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 16:31:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to YourName[0m
+08/04/2025 16:31:56 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 16:31:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:31:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:31:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:31:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#5 joined the room[0m
+08/04/2025 16:32:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:05 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#6 joined the room[0m
+08/04/2025 16:32:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to YourName[0m
+08/04/2025 16:32:08 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 16:32:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:08 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: invalid type code: 00
+08/04/2025 16:32:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#7 joined the room[0m
+08/04/2025 16:32:13 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:13 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#8 joined the room[0m
+08/04/2025 16:32:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#9 joined the room[0m
+08/04/2025 16:32:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Game has not started. Type /ready first.[0m
+08/04/2025 16:32:20 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-17 is ready (1/5)[0m
+08/04/2025 16:32:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-13 is ready (2/5)[0m
+08/04/2025 16:32:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-17 is ready (2/5)[0m
+08/04/2025 16:32:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-17 is ready (2/5)[0m
+08/04/2025 16:32:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-17 is ready (2/5)[0m
+08/04/2025 16:32:24 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-17 is ready (2/5)[0m
+08/04/2025 16:32:26 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-13 is ready (2/5)[0m
+08/04/2025 16:32:26 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-13 is ready (2/5)[0m
+08/04/2025 16:32:32 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 16:32:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to dwadas[0m
+08/04/2025 16:32:48 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 16:32:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:48 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadas]: Room[lobby] dwadas#10 joined the room[0m
+08/04/2025 16:32:49 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:32:49 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadas]: Room[lobby] YourName#11 joined the room[0m
+08/04/2025 16:32:51 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadas]: Room[lobby]: Thread-19 is ready (3/2)[0m
+08/04/2025 16:32:53 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadas]: Room[lobby]: Thread-21 is ready (4/2)[0m
+08/04/2025 16:32:56 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadas]: Game has not started. Type /ready first.[0m
+08/04/2025 16:33:10 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 16:33:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to dwadsadw[0m
+08/04/2025 16:33:21 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 16:33:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:33:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:33:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:33:21 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby] dwadsadw#1 joined the room[0m
+08/04/2025 16:33:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 16:33:22 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby] YourName#2 joined the room[0m
+08/04/2025 16:33:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: Thread-1 is ready (1/2)[0m
+08/04/2025 16:33:25 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: Thread-3 is ready (2/2)[0m
+08/04/2025 16:33:25 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/04/2025 16:33:26 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: dwadsadw has locked in their pick.[0m
+08/04/2025 16:33:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: YourName has locked in their pick.[0m
+08/04/2025 16:33:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: dwadsadw(paper) vs YourName(paper) -> Tie[0m
+08/04/2025 16:33:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: YourName(paper) vs dwadsadw(paper) -> Tie[0m
+08/04/2025 16:33:27 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+08/04/2025 16:33:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: dwadsadw was eliminated (no pick)[0m
+08/04/2025 16:33:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: YourName was eliminated (no pick)[0m
+08/04/2025 16:33:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: Game ended in a tie. No players remain.[0m
+08/04/2025 16:33:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: == FINAL SCORES ==[0m
+08/04/2025 16:33:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: dwadsadw - 0 point(s)[0m
+08/04/2025 16:33:57 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwadsadw]: Room[lobby]: YourName - 0 point(s)[0m
+08/04/2025 17:06:16 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 17:06:29 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to YourName[0m
+08/04/2025 17:06:29 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 17:06:29 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:06:29 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:06:29 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:06:29 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#1 joined the room[0m
+08/04/2025 17:06:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:06:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] adwads#2 joined the room[0m
+08/04/2025 17:06:39 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-1 is ready (1/2)[0m
+08/04/2025 17:06:40 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-3 is ready (2/2)[0m
+08/04/2025 17:06:40 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/04/2025 17:06:41 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName has locked in their pick.[0m
+08/04/2025 17:06:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: adwads has locked in their pick.[0m
+08/04/2025 17:06:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName(rock) vs adwads(paper) -> adwads wins[0m
+08/04/2025 17:06:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: adwads(paper) vs YourName(rock) -> YourName wins[0m
+08/04/2025 17:06:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:06:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:06:42 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+08/04/2025 17:07:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName was eliminated (no pick)[0m
+08/04/2025 17:07:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: adwads was eliminated (no pick)[0m
+08/04/2025 17:07:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Game ended in a tie. No players remain.[0m
+08/04/2025 17:07:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: == FINAL SCORES ==[0m
+08/04/2025 17:07:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName - 1 point(s)[0m
+08/04/2025 17:07:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: adwads - 1 point(s)[0m
+08/04/2025 17:18:35 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:18:35 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: adwads#2 disconnected[0m
+08/04/2025 17:18:39 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 17:18:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to dwajiodamo[0m
+08/04/2025 17:18:44 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 17:18:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:18:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:18:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:18:44 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby] dwajiodamo#3 joined the room[0m
+08/04/2025 17:18:50 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:18:50 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby] dwnaiod#4 joined the room[0m
+08/04/2025 17:18:54 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: Thread-7 is ready (1/2)[0m
+08/04/2025 17:18:55 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: Thread-5 is ready (2/2)[0m
+08/04/2025 17:18:55 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/04/2025 17:18:58 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwnaiod has locked in their pick.[0m
+08/04/2025 17:18:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwajiodamo has locked in their pick.[0m
+08/04/2025 17:18:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwajiodamo(paper) vs dwnaiod(rock) -> dwnaiod wins[0m
+08/04/2025 17:18:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwnaiod(rock) vs dwajiodamo(paper) -> dwajiodamo wins[0m
+08/04/2025 17:18:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:18:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:18:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+08/04/2025 17:19:06 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwnaiod has locked in their pick.[0m
+08/04/2025 17:19:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwajiodamo has locked in their pick.[0m
+08/04/2025 17:19:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwajiodamo(rock) vs dwnaiod(paper) -> dwnaiod wins[0m
+08/04/2025 17:19:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwnaiod(paper) vs dwajiodamo(rock) -> dwajiodamo wins[0m
+08/04/2025 17:19:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:19:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:19:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: Starting Round 3. Make your pick: /pick <r|p|s>[0m
+08/04/2025 17:19:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwnaiod has locked in their pick.[0m
+08/04/2025 17:19:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwajiodamo has locked in their pick.[0m
+08/04/2025 17:19:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwajiodamo(paper) vs dwnaiod(rock) -> dwnaiod wins[0m
+08/04/2025 17:19:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: dwnaiod(rock) vs dwajiodamo(paper) -> dwajiodamo wins[0m
+08/04/2025 17:19:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:19:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:19:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dwajiodamo]: Room[lobby]: Starting Round 4. Make your pick: /pick <r|p|s>[0m
+08/04/2025 17:19:52 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 17:20:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;33mName set to mwodnaod[0m
+08/04/2025 17:20:04 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 17:20:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:20:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:20:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:20:04 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby] mwodnaod#1 joined the room[0m
+08/04/2025 17:20:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:20:08 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby] iod#2 joined the room[0m
+08/04/2025 17:20:11 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: Thread-1 is ready (1/2)[0m
+08/04/2025 17:20:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: Thread-3 is ready (2/2)[0m
+08/04/2025 17:20:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: Starting Round 1. Make your pick: /pick <r|p|s>[0m
+08/04/2025 17:20:14 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: mwodnaod has locked in their pick.[0m
+08/04/2025 17:20:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: iod has locked in their pick.[0m
+08/04/2025 17:20:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: mwodnaod(rock) vs iod(paper) -> iod wins[0m
+08/04/2025 17:20:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: iod(paper) vs mwodnaod(rock) -> mwodnaod wins[0m
+08/04/2025 17:20:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:20:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 17:20:15 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: Starting Round 2. Make your pick: /pick <r|p|s>[0m
+08/04/2025 17:20:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: mwodnaod was eliminated (no pick)[0m
+08/04/2025 17:20:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: iod was eliminated (no pick)[0m
+08/04/2025 17:20:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: Game ended in a tie. No players remain.[0m
+08/04/2025 17:20:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: == FINAL SCORES ==[0m
+08/04/2025 17:20:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: mwodnaod - 1 point(s)[0m
+08/04/2025 17:20:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: iod - 1 point(s)[0m
+08/04/2025 18:00:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32mnull[0m
+08/04/2025 18:00:16 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[mwodnaod]: Room[lobby]: iod#2 disconnected[0m
+08/04/2025 18:00:16 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/04/2025 18:00:52 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 18:01:09 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 18:01:09 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[Mukaddis]: Room[lobby] Mukaddis#1 joined the room[0m
+08/04/2025 18:01:12 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[Mukaddis]: Room[lobby] jdiwoadjaiwo#2 joined the room[0m
+08/04/2025 18:01:19 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[Mukaddis]: Room[PRIVATE] Mukaddis#1 joined the room[0m
+08/04/2025 18:01:37 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 18:01:47 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 18:01:47 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#4 joined the room[0m
+08/04/2025 18:01:52 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-7 is ready (1/2)[0m
+08/04/2025 18:01:53 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Thread-5 is ready (2/2)[0m
+08/04/2025 18:01:53 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Starting Round 1. Make your pick: /pick <rock|paper|scissors>[0m
+08/04/2025 18:01:59 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName has locked in their pick.[0m
+08/04/2025 18:02:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: jnioawdioa has locked in their pick.[0m
+08/04/2025 18:02:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: jnioawdioa(paper) vs YourName(rock) -> jnioawdioa wins[0m
+08/04/2025 18:02:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName(rock) vs jnioawdioa(paper) -> jnioawdioa wins[0m
+08/04/2025 18:02:01 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Starting Round 2. Make your pick: /pick <rock|paper|scissors>[0m
+08/04/2025 18:02:30 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] jnioawdioa#3 left the room[0m
+08/04/2025 18:02:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: jnioawdioa was eliminated (no pick)[0m
+08/04/2025 18:02:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName was eliminated (no pick)[0m
+08/04/2025 18:02:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: Game ended in a tie. No players remain.[0m
+08/04/2025 18:02:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: == FINAL SCORES ==[0m
+08/04/2025 18:02:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: jnioawdioa - 1 point(s)[0m
+08/04/2025 18:02:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby]: YourName - 0 point(s)[0m
+08/04/2025 21:28:30 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 21:28:41 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 21:28:41 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdnioawdnaio]: Room[lobby] dawdnioawdnaio#1 joined the room[0m
+08/04/2025 21:28:43 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdnioawdnaio]: Room[lobby] apapapa#2 joined the room[0m
+08/04/2025 21:28:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dawdnioawdnaio]: Room[dwamopda] dawdnioawdnaio#1 joined the room[0m
+08/04/2025 21:28:46 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/04/2025 21:35:20 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 21:35:31 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 21:35:31 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dmioaaoao]: Room[lobby] dmioaaoao#2 joined the room[0m
+08/04/2025 21:35:37 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[dmioaaoao]: Room[lobby] djaiwdao#1 left the room[0m
+08/04/2025 22:01:32 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 22:01:36 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 22:01:36 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourNamedawopja]: Room[lobby] YourNamedawopja#1 joined the room[0m
+08/04/2025 22:01:38 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourNamedawopja]: Room[daw] YourNamedawopja#1 joined the room[0m
+08/04/2025 22:01:39 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/04/2025 22:45:09 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/04/2025 22:45:11 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/04/2025 22:45:11 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#1 joined the room[0m
+08/04/2025 22:45:13 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[daw] YourName#1 joined the room[0m
+08/04/2025 22:45:18 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[dawda] YourName#1 joined the room[0m
+08/05/2025 11:50:15 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 11:50:19 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 11:50:19 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourNamejio]: Room[lobby] YourNamejio#1 joined the room[0m
+08/05/2025 11:50:23 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourNamejio]: Room[nio] YourNamejio#1 joined the room[0m
+08/05/2025 12:57:37 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 12:57:43 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 12:57:43 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[lobby] YourName#1 joined the room[0m
+08/05/2025 12:57:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[YourName]: Room[daw] YourName#1 joined the room[0m
+08/05/2025 13:01:34 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 13:01:41 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 13:01:45 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 13:01:45 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[wajdia]: Room[lobby] wajdia#1 joined the room[0m
+08/05/2025 13:01:46 [Project.Client.Client] ([32mINFO[0m):
+> [0;32m[wajdia]: Room[dwa] wajdia#1 joined the room[0m
+08/05/2025 13:13:42 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 13:13:47 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 13:14:55 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 13:15:15 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 13:26:32 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 13:26:47 [Project.Client.Client] ([33mWARNING[0m):
+> Failed to connect: Connection refused: connect
+08/05/2025 13:27:03 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 13:30:05 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 13:30:22 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 13:44:51 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 13:44:53 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 13:47:24 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 13:59:02 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 13:59:08 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 15:02:41 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 15:02:43 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 15:07:12 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 15:07:14 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 15:07:28 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 15:07:46 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 15:07:59 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 15:23:46 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 15:24:48 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 15:25:00 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 15:36:35 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 15:36:50 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 15:46:26 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 15:46:28 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 15:49:45 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 15:49:46 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 15:53:08 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 15:53:10 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 15:57:02 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 15:57:15 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 16:08:27 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 16:08:30 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 19:33:50 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 19:33:52 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 19:37:42 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 19:37:47 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 19:38:01 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 19:42:53 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 19:42:58 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 19:43:11 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 19:45:40 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 19:49:49 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 19:50:05 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 19:53:58 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 19:54:07 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 19:57:18 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 19:57:42 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 19:57:52 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:02:32 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 20:02:37 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:02:43 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:04:30 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 20:04:52 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:05:02 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:05:09 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 20:05:28 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:05:30 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:10:22 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:10:29 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:19:14 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:19:16 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:23:21 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 20:23:29 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:23:39 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:26:01 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:26:09 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:26:22 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: writing aborted; java.io.NotSerializableException: Project.Common.User
+08/05/2025 20:26:35 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:26:56 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:27:07 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: writing aborted; java.io.NotSerializableException: Project.Common.User
+08/05/2025 20:30:15 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:30:24 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:30:30 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: writing aborted; java.io.NotSerializableException: Project.Common.User
+08/05/2025 20:32:32 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:32:34 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:32:44 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:32:51 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:33:19 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:33:27 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:37:17 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:37:26 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:40:01 [Project.Client.Client] ([32mINFO[0m):
+> Client Created
+08/05/2025 20:40:09 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 20:40:24 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 20:44:48 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/05/2025 20:44:59 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 23:21:34 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/05/2025 23:21:38 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 23:39:32 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/05/2025 23:39:35 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/05/2025 23:46:27 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/05/2025 23:46:37 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/05/2025 23:46:41 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 00:31:12 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 00:31:17 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 00:46:24 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 00:46:37 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 00:47:02 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 01:08:06 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 01:08:17 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 01:19:53 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 01:20:01 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 01:27:41 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 01:27:54 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 01:43:35 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 01:43:46 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 01:59:42 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 01:59:54 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 02:03:16 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 02:03:27 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 02:03:37 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 02:14:52 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 02:15:03 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 02:15:14 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 10:56:51 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 10:57:02 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 10:57:14 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:04:58 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:05:12 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:05:22 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:10:24 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:10:30 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:11:11 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:11:14 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:17:46 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:17:57 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:25:06 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:25:28 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:25:44 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:27:27 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:27:38 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:27:45 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:28:32 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:29:52 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:30:00 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:33:28 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:34:44 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:34:55 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:36:20 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:36:33 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:36:51 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 12:40:39 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null

@@ -4,31 +4,25 @@ import java.net.Socket;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
-
+import Project.Common.*;
 import Project.Common.TextFX.Color;
-import Project.Common.ConnectionPayload;
-import Project.Common.Constants;
-import Project.Common.LoggerUtil;
-import Project.Common.Payload;
-import Project.Common.PayloadType;
-import Project.Common.RoomAction;
-import Project.Common.RoomResultPayload;
-import Project.Common.TextFX;
 
-/**
- * A server-side representation of a single client
- */
 public class ServerThread extends BaseServerThread {
     private Consumer<ServerThread> onInitializationComplete;
+    private boolean isSpectator = false;
 
-    // Logs thread information with client id
-    @Override
-    protected void info(String message) {
-        LoggerUtil.INSTANCE
-            .info(TextFX.colorize(String.format("Thread[%s]: %s", this.getClientId(), message), Color.CYAN));
+    public boolean isSpectator() {
+        return isSpectator;
+    }
+    public void setSpectator(boolean spectator) {
+        isSpectator = spectator;
     }
 
-    // Constructor sets client socket and initialization callback
+    @Override
+    protected void info(String message) {
+        LoggerUtil.INSTANCE.info(TextFX.colorize(String.format("Thread[%s]: %s", this.getClientId(), message), Color.CYAN));
+    }
+
     protected ServerThread(Socket myClient, Consumer<ServerThread> onInitializationComplete) {
         Objects.requireNonNull(myClient, "Client socket cannot be null");
         Objects.requireNonNull(onInitializationComplete, "callback cannot be null");
@@ -37,53 +31,83 @@ public class ServerThread extends BaseServerThread {
         info("ServerThread created");
     }
 
-    // Sends the list of available rooms to the client
-    public boolean sendRooms(List<String> rooms) {
-        RoomResultPayload rrp = new RoomResultPayload();
-        rrp.setRooms(rooms);
-        return sendToClient(rrp);
+    @Override
+    protected void processPayload(Payload incoming) {
+        switch (incoming.getPayloadType()) {
+            case CLIENT_CONNECT:
+                setClientName(((ConnectionPayload) incoming).getClientName().trim());
+                break;
+            case JOIN_SPECTATOR:
+                setClientName(((ConnectionPayload) incoming).getClientName().trim());
+                Server.INSTANCE.addSpectatorToLobby(this);
+                break;
+            case DISCONNECT:
+                currentRoom.handleDisconnect(this);
+                break;
+            case MESSAGE:
+                currentRoom.handleMessage(this, incoming.getMessage());
+                break;
+            case REVERSE:
+                currentRoom.handleReverseText(this, incoming.getMessage());
+                break;
+            case ROOM_CREATE:
+                currentRoom.handleCreateRoom(this, incoming.getMessage());
+                break;
+            case ROOM_JOIN:
+                currentRoom.handleJoinRoom(this, incoming.getMessage());
+                break;
+            case ROOM_LEAVE:
+                currentRoom.handleJoinRoom(this, Room.LOBBY);
+                break;
+            case ROOM_LIST:
+                currentRoom.handleListRooms(this, incoming.getMessage());
+                break;
+            case GAME_READY:
+                currentRoom.handleGameReady(this, incoming);
+                break;
+            case TOGGLE_AWAY:
+                currentRoom.handleToggleAway(this);
+                break;
+            case GAME_PICK:
+                currentRoom.handlePlayerPick(this, incoming.getMessage());
+                break;
+            default:
+                LoggerUtil.INSTANCE.warning(TextFX.colorize("Unknown payload type received", Color.RED));
+                break;
+        }
     }
-
-    // Sends a disconnect payload
+    
+    public boolean sendRooms(List<String> rooms) {
+        RoomResultPayload payload = new RoomResultPayload();
+        payload.setRooms(rooms);
+        return sendToClient(payload);
+    }
     protected boolean sendDisconnect(long clientId) {
         Payload payload = new Payload();
         payload.setClientId(clientId);
         payload.setPayloadType(PayloadType.DISCONNECT);
         return sendToClient(payload);
     }
-
-    // Resets the user list on the client side
     protected boolean sendResetUserList() {
-        return sendClientInfo(Constants.DEFAULT_CLIENT_ID, null, RoomAction.JOIN);
+        Payload payload = new Payload();
+        payload.setPayloadType(PayloadType.ROOM_CLEAR);
+        return sendToClient(payload);
     }
-
-    // Sends client info (join/leave) to another client
-    protected boolean sendClientInfo(long clientId, String clientName, RoomAction action) {
-        return sendClientInfo(clientId, clientName, action, false);
-    }
-
-    // Sends client info with sync flag for silent updates
-    protected boolean sendClientInfo(long clientId, String clientName, RoomAction action, boolean isSync) {
+    protected boolean sendClientInfo(long clientId, String clientName, RoomAction action, boolean isSync, boolean isSpectator) {
         ConnectionPayload payload = new ConnectionPayload();
         switch (action) {
             case JOIN:
-                payload.setPayloadType(PayloadType.ROOM_JOIN);
+                payload.setPayloadType(isSync ? PayloadType.SYNC_CLIENT : PayloadType.ROOM_JOIN);
                 break;
             case LEAVE:
                 payload.setPayloadType(PayloadType.ROOM_LEAVE);
                 break;
-            default:
-                break;
-        }
-        if (isSync) {
-            payload.setPayloadType(PayloadType.SYNC_CLIENT);
         }
         payload.setClientId(clientId);
         payload.setClientName(clientName);
+        payload.setSpectator(isSpectator);
         return sendToClient(payload);
     }
-
-    // Sends the assigned client ID to the client
     protected boolean sendClientId() {
         ConnectionPayload payload = new ConnectionPayload();
         payload.setPayloadType(PayloadType.CLIENT_ID);
@@ -91,8 +115,6 @@ public class ServerThread extends BaseServerThread {
         payload.setClientName(getClientName());
         return sendToClient(payload);
     }
-
-    // Sends a message payload
     protected boolean sendMessage(long clientId, String message) {
         Payload payload = new Payload();
         payload.setPayloadType(PayloadType.MESSAGE);
@@ -100,59 +122,6 @@ public class ServerThread extends BaseServerThread {
         payload.setClientId(clientId);
         return sendToClient(payload);
     }
-
-    // Handles all incoming payloads from client
-    @Override
-    protected void processPayload(Payload incoming) {
-        switch (incoming.getPayloadType()) {
-            case CLIENT_CONNECT:
-                setClientName(((ConnectionPayload) incoming).getClientName().trim());
-                break;
-
-            case DISCONNECT:
-                currentRoom.handleDisconnect(this);
-                break;
-
-            case MESSAGE:
-                currentRoom.handleMessage(this, incoming.getMessage());
-                break;
-
-            case REVERSE:
-                currentRoom.handleReverseText(this, incoming.getMessage());
-                break;
-
-            case ROOM_CREATE:
-                currentRoom.handleCreateRoom(this, incoming.getMessage());
-                break;
-
-            case ROOM_JOIN:
-                currentRoom.handleJoinRoom(this, incoming.getMessage());
-                break;
-
-            case ROOM_LEAVE:
-                currentRoom.handleJoinRoom(this, Room.LOBBY);
-                break;
-
-            case ROOM_LIST:
-                currentRoom.handleListRooms(this, incoming.getMessage());
-                break;
-
-            // ==== MILESTONE 2 PAYLOADS ====
-            case GAME_READY:
-                currentRoom.handleGameReady(this); // Notifies that player is ready
-                break;
-
-            case GAME_PICK:
-                currentRoom.handlePlayerPick(this, incoming.getMessage()); // Sends the pick made by the player
-                break;
-
-            default:
-                LoggerUtil.INSTANCE.warning(TextFX.colorize("Unknown payload type received", Color.RED));
-                break;
-        }
-    }
-
-    // Called once the thread is fully initialized and ready
     @Override
     protected void onInitialized() {
         onInitializationComplete.accept(this);
