@@ -3,6 +3,13 @@
   "configurations": [
     {
         "type": "java",
+        "name": "ClientGameUI",
+        "request": "launch",
+        "mainClass": "Project.Client.ClientGameUI",
+        "projectName": "mi348-IT114-450_8bd41477"
+    },
+    {
+        "type": "java",
         "name": "Server",
         "request": "launch",
         "mainClass": "Project.Server.Server",

@@ -1,55 +1,340 @@
 // UCID: mi348
-// Date: 2025-08-04
+// Date: 2025-08-06
 package Project.Client;
 
 import Project.Common.*;
-import Project.Common.TextFX.Color;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.Socket;
-import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public enum Client {
     INSTANCE;
+    
+    private Timer roundTimer;
+    private ClientGameUI ui;
+    private PlayerTableModel playerTableModel;
+    private final ConcurrentHashMap<Long, User> knownClients = new ConcurrentHashMap<>();
+    private final User myUser = new User();
+    private Socket server = null;
+    private ObjectOutputStream out = null;
+    private ObjectInputStream in = null;
+    private volatile boolean isRunning = true;
+    private String lastKnownAddress = null;
+    private int lastKnownPort = -1;
+    private String lastPick = "";
+    private boolean cooldownEnabled = false;
 
-    {
+    private Client() {
+        // Constructor is empty
+    }
+    
+    public void start() {
         LoggerUtil.LoggerConfig config = new LoggerUtil.LoggerConfig();
         config.setFileSizeLimit(2048 * 1024);
         config.setFileCount(1);
         config.setLogLocation("client.log");
         LoggerUtil.INSTANCE.setConfig(config);
+        LoggerUtil.INSTANCE.info("Client Created and Logger configured.");
+    }
+    
+    public void registerUI(ClientGameUI ui) {
+        this.ui = ui;
+        this.playerTableModel = ui.getPlayerTableModel();
+        attachListeners();
     }
 
-    private Socket server = null;
-    private ObjectOutputStream out = null;
-    private ObjectInputStream in = null;
-    private volatile boolean isRunning = true;
-    private final ConcurrentHashMap<Long, User> knownClients = new ConcurrentHashMap<>();
-    private User myUser = new User();
-    private String lastKnownAddress = null;
-    private int lastKnownPort = -1;
-    private final Pattern ipAddressPattern = Pattern.compile("/connect\\s+(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}:\\d{3,5})");
-    private final Pattern localhostPattern = Pattern.compile("/connect\\s+(localhost:\\d{3,5})");
-
-    private JTextArea gameEventLog = new JTextArea();
-    private JTextArea playerStatusArea = new JTextArea();
-
-    private Client() {
-        LoggerUtil.INSTANCE.info("Client Created");
+    private void attachListeners() {
+        ui.getConnectButton().addActionListener(e -> handleConnect(false));
+        ui.getSpectatorButton().addActionListener(e -> handleConnect(true));
+        ui.getReadyButton().addActionListener(e -> handleReady());
+        ui.getAwayButton().addActionListener(e -> sendCommand("/toggleaway"));
+        ui.getListRoomsButton().addActionListener(e -> sendCommand("/listrooms"));
+        ui.getCreateRoomButton().addActionListener(e -> handleCreateRoom());
+        ActionListener pickListener = e -> {
+            JButton button = (JButton) e.getSource();
+            sendPick(button.getText().toLowerCase());
+        };
+        ui.getRockButton().addActionListener(pickListener);
+        ui.getPaperButton().addActionListener(pickListener);
+        ui.getScissorsButton().addActionListener(pickListener);
+        ui.getLizardButton().addActionListener(pickListener);
+        ui.getSpockButton().addActionListener(pickListener);
     }
 
+    private void handleConnect(boolean asSpectator) {
+        if (isConnected()) {
+            logToUI("Already connected.");
+            return;
+        }
+        String host = ui.getHostField().getText().trim();
+        String portStr = ui.getPortField().getText().trim();
+        String name = ui.getNameField().getText().trim();
+        if (host.isEmpty() || portStr.isEmpty() || name.isEmpty()) {
+            logToUI("Host, Port, and Username cannot be empty.");
+            return;
+        }
+        try {
+            int port = Integer.parseInt(portStr);
+            myUser.setClientName(name);
+            myUser.setSpectator(asSpectator);
+            String status = asSpectator ? " as a spectator" : "";
+            logToUI("Connecting to " + host + ":" + port + " as " + name + status);
+            if (connect(host, port)) {
+                sendConnectionRequest(name, asSpectator);
+            } else {
+                logToUI("Connection failed. Check server and details.");
+            }
+        } catch (NumberFormatException ex) {
+            logToUI("Invalid port number.");
+        } catch (IOException ex) {
+            logToUI("Error during connection: " + ex.getMessage());
+        }
+    }
+
+    private void sendConnectionRequest(String name, boolean asSpectator) throws IOException {
+        ConnectionPayload payload = new ConnectionPayload();
+        payload.setClientName(name);
+        payload.setPayloadType(asSpectator ? PayloadType.JOIN_SPECTATOR : PayloadType.CLIENT_CONNECT);
+        sendToServer(payload);
+    }
+    
+    private void handleReady() {
+        if (myUser.isSpectator()) return;
+        
+        ReadyPayload payload = new ReadyPayload();
+        if (knownClients.size() <= 1 || knownClients.keySet().iterator().next() == myUser.getClientId()) {
+            payload.setExtraOptionsEnabled(ui.getExtraOptionsCheck().isSelected());
+            payload.setCooldownEnabled(ui.getCooldownCheck().isSelected());
+        }
+        
+        try {
+            sendToServer(payload);
+            ui.getReadyButton().setEnabled(false);
+        } catch (IOException e) {
+            logToUI("Error sending ready status.");
+        }
+    }
+
+    public boolean processClientCommand(String text) throws IOException {
+        if (!text.startsWith(Constants.COMMAND_TRIGGER)) return false;
+        String command = text.substring(1);
+        String[] parts = command.split(" ", 2);
+        String action = parts[0].toLowerCase();
+        String argument = (parts.length > 1) ? parts[1] : "";
+        switch (action) {
+            case "ready": handleReady(); break;
+            case "toggleaway": sendToggleAway(); break;
+            case "pick": sendGamePick(argument); break;
+            case "listrooms": sendRoomAction(argument, RoomAction.LIST); break;
+            case "createroom": sendRoomAction(argument, RoomAction.CREATE); break;
+            case "joinroom": sendRoomAction(argument, RoomAction.JOIN); break;
+            default: return false;
+        }
+        return true;
+    }
+
+    private void sendToggleAway() throws IOException {
+        Payload payload = new Payload();
+        payload.setPayloadType(PayloadType.TOGGLE_AWAY);
+        sendToServer(payload);
+    }
+    
+    private void processPayload(Payload p) {
+        SwingUtilities.invokeLater(() -> {
+            String msg = p.getMessage();
+            if (p.getPayloadType() != PayloadType.ROUND_START && msg != null && !msg.isBlank()) {
+                logToUI(msg);
+            }
+            switch (p.getPayloadType()) {
+                case CLIENT_ID:
+                    if (p instanceof ConnectionPayload cp) {
+                        myUser.setClientId(cp.getClientId());
+                        knownClients.put(myUser.getClientId(), myUser);
+                    }
+                    updatePlayerList();
+                    break;
+                case ROOM_CLEAR:
+                    knownClients.clear();
+                    if (myUser.getClientId() != Constants.DEFAULT_CLIENT_ID) {
+                        knownClients.put(myUser.getClientId(), myUser);
+                    }
+                    updatePlayerList();
+                    break;
+                case ROOM_JOIN:
+                case SYNC_CLIENT:
+                    if (p instanceof ConnectionPayload cp) {
+                        if (cp.getClientId() == Constants.DEFAULT_CLIENT_ID || cp.getClientName() == null) {
+                            return;
+                        }
+                        User user = knownClients.computeIfAbsent(cp.getClientId(), id -> new User());
+                        user.setClientId(cp.getClientId());
+                        user.setClientName(cp.getClientName());
+                        user.setSpectator(cp.isSpectator());
+                    }
+                    updatePlayerList();
+                    break;
+                case ROOM_LEAVE:
+                     if (p instanceof ConnectionPayload cp) {
+                        knownClients.remove(cp.getClientId());
+                     }
+                    updatePlayerList();
+                    break;
+                case ROOM_LIST:
+                    if (p instanceof RoomResultPayload rrp) {
+                        new RoomListDialog(ui.getFrame(), rrp.getRooms()).setVisible(true);
+                    }
+                    break;
+                case SYNC_POINTS:
+                    if (p instanceof PointsPayload pp) {
+                        User user = knownClients.get(pp.getClientId());
+                        if (user != null) {
+                            user.setPoints(pp.getPoints());
+                            updatePlayerList();
+                        }
+                    }
+                    break;
+                case PLAYER_STATUS:
+                    if (p instanceof PlayerStatusPayload psp) {
+                        User user = knownClients.get(psp.getClientId());
+                        if (user != null) {
+                            user.setStatus(psp.getStatus());
+                            updatePlayerList();
+                        }
+                    }
+                    break;
+                case ROUND_START:
+                    if (p instanceof RoundStartPayload rsp) {
+                        logToUI(rsp.getMessage());
+                        startRoundTimer(rsp.getRoundDurationSeconds());
+                    }
+                    ui.getReadyButton().setEnabled(false);
+                    ui.getExtraOptionsCheck().setEnabled(false);
+                    ui.getCooldownCheck().setEnabled(false);
+                    
+                    // Re-enable all buttons first
+                    ui.getRockButton().setEnabled(true);
+                    ui.getPaperButton().setEnabled(true);
+                    ui.getScissorsButton().setEnabled(true);
+                    ui.getLizardButton().setEnabled(true);
+                    ui.getSpockButton().setEnabled(true);
+
+                    // Then, if cooldown is on, disable the last picked button
+                    if (cooldownEnabled && lastPick != null && !lastPick.isEmpty()) {
+                        switch (lastPick) {
+                            case "rock": ui.getRockButton().setEnabled(false); break;
+                            case "paper": ui.getPaperButton().setEnabled(false); break;
+                            case "scissors": ui.getScissorsButton().setEnabled(false); break;
+                            case "lizard": ui.getLizardButton().setEnabled(false); break;
+                            case "spock": ui.getSpockButton().setEnabled(false); break;
+                        }
+                    }
+                    break;
+                
+                // vvv THIS IS THE UPDATED LOGIC vvv
+                case RESET_GAME_STATE:
+                    ui.getReadyButton().setEnabled(true);
+                    ui.getAwayButton().setSelected(false); // Un-toggle the away button
+                    ui.getExtraOptionsCheck().setSelected(false);
+                    ui.getExtraOptionsCheck().setEnabled(true);
+                    ui.getCooldownCheck().setSelected(false);
+                    ui.getCooldownCheck().setEnabled(true);
+                    lastPick = ""; // Reset cooldown
+                    // Re-enable all game buttons
+                    ui.getRockButton().setEnabled(true);
+                    ui.getPaperButton().setEnabled(true);
+                    ui.getScissorsButton().setEnabled(true);
+                    ui.getLizardButton().setEnabled(true);
+                    ui.getSpockButton().setEnabled(true);
+                    break;
+                // ^^^ END OF UPDATE ^^^
+
+                case SESSION_END:
+                case GAME_RESULT:
+                    if(roundTimer != null) {
+                        roundTimer.stop();
+                        ui.getTimerLabel().setText("Time Remaining: --");
+                    }
+                    // The main reset logic has been moved to RESET_GAME_STATE
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+    private void startRoundTimer(int seconds) {
+        if (roundTimer != null && roundTimer.isRunning()) {
+            roundTimer.stop();
+        }
+        AtomicInteger timeLeft = new AtomicInteger(seconds);
+        ui.getTimerLabel().setText("Time Remaining: " + timeLeft.get());
+        roundTimer = new Timer(1000, e -> {
+            int remaining = timeLeft.decrementAndGet();
+            ui.getTimerLabel().setText("Time Remaining: " + remaining);
+            if (remaining <= 0) {
+                ((Timer)e.getSource()).stop();
+                logToUI("Time is up!");
+                ui.getRockButton().setEnabled(false);
+                ui.getPaperButton().setEnabled(false);
+                ui.getScissorsButton().setEnabled(false);
+                ui.getLizardButton().setEnabled(false);
+                ui.getSpockButton().setEnabled(false);
+            }
+        });
+        roundTimer.start();
+    }
+    private void updatePlayerList() {
+        List<User> currentUsers = new ArrayList<>();
+        for (User user : knownClients.values()) {
+            if (user != null && user.getClientName() != null) {
+                currentUsers.add(user);
+            }
+        }
+        playerTableModel.setPlayers(currentUsers);
+    }
+    private void handleCreateRoom() {
+        String roomName = JOptionPane.showInputDialog(ui.getFrame(), "Enter new room name:", "Create Room", JOptionPane.PLAIN_MESSAGE);
+        if (roomName != null && !roomName.trim().isEmpty()) {
+            sendCommand("/createroom " + roomName.trim());
+        }
+    }
+    private void sendPick(String pick) {
+        if (myUser.isSpectator()) {
+            logToUI("Spectators can't play!");
+            return;
+        }
+        if (cooldownEnabled && pick.equals(lastPick)) {
+            logToUI("Cooldown is enabled: Can't pick the same option twice in a row!");
+            return;
+        }
+        
+        // Disable all buttons immediately after picking
+        ui.getRockButton().setEnabled(false);
+        ui.getPaperButton().setEnabled(false);
+        ui.getScissorsButton().setEnabled(false);
+        ui.getLizardButton().setEnabled(false);
+        ui.getSpockButton().setEnabled(false);
+        
+        lastPick = pick;
+        logToUI("Picked " + pick.toUpperCase());
+        sendCommand("/pick " + pick);
+    }
+    public void sendCommand(String command) {
+        try {
+            processClientCommand(command);
+        } catch (IOException e) {
+            logToUI("Error sending command: " + e.getMessage());
+        }
+    }
     public boolean isConnected() {
         return server != null && server.isConnected() && !server.isClosed()
                 && !server.isInputShutdown() && !server.isOutputShutdown();
     }
-
     private boolean connect(String address, int port) {
         try {
             this.lastKnownAddress = address;
@@ -61,259 +346,50 @@ public enum Client {
             CompletableFuture.runAsync(this::listenToServer);
         } catch (IOException e) {
             LoggerUtil.INSTANCE.warning("Failed to connect: " + e.getMessage());
+            return false;
         }
         return isConnected();
     }
-
-    private boolean isConnection(String text) {
-        Matcher ipMatcher = ipAddressPattern.matcher(text);
-        Matcher localhostMatcher = localhostPattern.matcher(text);
-        return ipMatcher.matches() || localhostMatcher.matches();
-    }
-
-    public boolean processClientCommand(String text) throws IOException {
-        boolean wasCommand = false;
-        if (text.startsWith(Constants.COMMAND_TRIGGER)) {
-            text = text.substring(1);
-            if (isConnection("/" + text)) {
-                if (myUser.getClientName() == null || myUser.getClientName().isEmpty()) {
-                    LoggerUtil.INSTANCE.warning(TextFX.colorize("Please set your name via /name <name> before connecting", Color.RED));
-                    return true;
+    private void listenToServer() {
+        try {
+            while (isRunning && isRunning) {
+                Payload fromServer = (Payload) in.readObject();
+                if (fromServer != null) {
+                    processPayload(fromServer);
                 }
-                String[] parts = text.trim().replaceAll(" +", " ").split(" ")[1].split(":");
-                connect(parts[0].trim(), Integer.parseInt(parts[1].trim()));
-                sendClientName(myUser.getClientName());
-                wasCommand = true;
-            } else if (text.startsWith(Command.NAME.command)) {
-                text = text.replace(Command.NAME.command, "").trim();
-                if (text.length() == 0) {
-                    LoggerUtil.INSTANCE.warning(TextFX.colorize("This command requires a name as an argument", Color.RED));
-                    return true;
-                }
-                myUser.setClientName(text);
-                LoggerUtil.INSTANCE.info(TextFX.colorize(String.format("Name set to %s", myUser.getClientName()), Color.YELLOW));
-                wasCommand = true;
-            } else if (text.equalsIgnoreCase(Command.LIST_ROOMS.command)) {
-                sendRoomAction("", RoomAction.LIST);
-                wasCommand = true;
-            } else if (text.equalsIgnoreCase(Command.READY.command)) {
-                sendGameReady();
-                wasCommand = true;
-            } else if (text.startsWith(Command.CREATE_ROOM.command)) {
-                text = text.replace(Command.CREATE_ROOM.command, "").trim();
-                sendRoomAction(text, RoomAction.CREATE);
-                wasCommand = true;
-            } else if (text.startsWith(Command.PICK.command)) {
-                text = text.replace(Command.PICK.command, "").trim();
-                sendGamePick(text);
-                wasCommand = true;
             }
+        } catch (Exception e) {
+            LoggerUtil.INSTANCE.warning("Connection dropped: " + e.getMessage());
+            logToUI("Connection to server lost.");
         }
-        return wasCommand;
     }
-
-    private void sendRoomAction(String roomName, RoomAction action) throws IOException {
-        Payload payload = new Payload();
-        payload.setMessage(roomName);
-        switch (action) {
-            case CREATE -> payload.setPayloadType(PayloadType.ROOM_CREATE);
-            case JOIN -> payload.setPayloadType(PayloadType.ROOM_JOIN);
-            case LEAVE -> payload.setPayloadType(PayloadType.ROOM_LEAVE);
-            case LIST -> payload.setPayloadType(PayloadType.ROOM_LIST);
+    private void logToUI(String message) {
+        ui.getEventLog().append(message + "\n");
+        ui.getEventLog().setCaretPosition(ui.getEventLog().getDocument().getLength());
+    }
+    private void sendToServer(Payload payload) throws IOException {
+        if (isConnected()) {
+            out.writeObject(payload);
+            out.flush();
+        } else {
+            logToUI("Not connected to server");
         }
-        sendToServer(payload);
     }
-
-    private void sendGameReady() throws IOException {
-        Payload payload = new Payload();
-        payload.setPayloadType(PayloadType.GAME_READY);
-        sendToServer(payload);
-    }
-
     private void sendGamePick(String choice) throws IOException {
         Payload payload = new Payload();
         payload.setPayloadType(PayloadType.GAME_PICK);
         payload.setMessage(choice);
         sendToServer(payload);
     }
-
-    private void sendClientName(String name) throws IOException {
-        ConnectionPayload payload = new ConnectionPayload();
-        payload.setClientName(name);
-        payload.setPayloadType(PayloadType.CLIENT_CONNECT);
+     private void sendRoomAction(String roomName, RoomAction action) throws IOException {
+        Payload payload = new Payload();
+        payload.setMessage(roomName);
+        switch (action) {
+            case CREATE: payload.setPayloadType(PayloadType.ROOM_CREATE); break;
+            case JOIN: payload.setPayloadType(PayloadType.ROOM_JOIN); break;
+            case LIST: payload.setPayloadType(PayloadType.ROOM_LIST); break;
+            case LEAVE: payload.setPayloadType(PayloadType.ROOM_LEAVE); break;
+        }
         sendToServer(payload);
-    }
-
-    private void sendToServer(Payload payload) throws IOException {
-        if (isConnected()) {
-            out.writeObject(payload);
-            out.flush();
-        } else {
-            LoggerUtil.INSTANCE.warning("Not connected to server");
-        }
-    }
-
-    private void listenToServer() {
-        try {
-            while (isRunning && isConnected()) {
-                Payload fromServer = (Payload) in.readObject();
-                if (fromServer != null) {
-                    String msg = fromServer.getMessage();
-                    if (msg != null && !msg.isBlank()) {
-                        LoggerUtil.INSTANCE.info(TextFX.colorize(msg, Color.GREEN));
-                        SwingUtilities.invokeLater(() -> gameEventLog.append(msg + "\n"));
-                    }
-
-                    if (fromServer.getPayloadType() == PayloadType.GAME_RESULT) {
-                        if (fromServer instanceof RoomResultPayload resultPayload) {
-                            updateGameResults(resultPayload);
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            LoggerUtil.INSTANCE.warning("Connection dropped: " + e.getMessage());
-        }
-    }
-
-    private void updateGameResults(RoomResultPayload resultPayload) {
-        StringBuilder eventBuilder = new StringBuilder();
-        StringBuilder statusBuilder = new StringBuilder();
-
-        eventBuilder.append("Round result:\n");
-        eventBuilder.append("Winner: ").append(resultPayload.getWinnerName()).append("\n");
-
-        Map<User, String> choices = resultPayload.getPlayerChoices();
-        Map<User, Integer> points = resultPayload.getPlayerPoints();
-        Set<User> eliminated = resultPayload.getEliminatedPlayers();
-
-        eventBuilder.append("Choices:\n");
-        for (User user : choices.keySet()) {
-            eventBuilder.append("- ").append(user.getClientName())
-                        .append(": ").append(choices.get(user)).append("\n");
-        }
-
-        statusBuilder.append("Player Status:\n");
-        for (User user : points.keySet()) {
-            String name = user.getClientName();
-            int point = points.get(user);
-            String state = eliminated.contains(user) ? "eliminated"
-                            : choices.containsKey(user) ? "picked"
-                            : "waiting";
-            statusBuilder.append(String.format("- %s | %d pts | %s\n", name, point, state));
-        }
-
-        SwingUtilities.invokeLater(() -> {
-            gameEventLog.append(eventBuilder.toString() + "\n");
-            playerStatusArea.setText(statusBuilder.toString());
-        });
-    }
-
-    public void startGUI() {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Rock Paper Scissors Multiplayer - Milestone 3");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(900, 600);
-
-            JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            JTextField hostField = new JTextField("localhost", 10);
-            JTextField portField = new JTextField("3000", 5);
-            JTextField nameField = new JTextField("YourName", 10);
-            JButton connectBtn = new JButton("Connect");
-
-            topPanel.add(new JLabel("Host:"));
-            topPanel.add(hostField);
-            topPanel.add(new JLabel("Port:"));
-            topPanel.add(portField);
-            topPanel.add(new JLabel("Username:"));
-            topPanel.add(nameField);
-            topPanel.add(connectBtn);
-
-            gameEventLog.setEditable(false);
-            gameEventLog.setBorder(BorderFactory.createTitledBorder("Game Events"));
-            JScrollPane eventScroll = new JScrollPane(gameEventLog);
-            eventScroll.setPreferredSize(new Dimension(500, 400));
-
-            playerStatusArea.setEditable(false);
-            playerStatusArea.setBorder(BorderFactory.createTitledBorder("Players"));
-            JScrollPane playerScroll = new JScrollPane(playerStatusArea);
-            playerScroll.setPreferredSize(new Dimension(250, 400));
-
-            JPanel buttonPanel = new JPanel();
-            JButton listRoomsButton = new JButton("Room List");
-            JButton createRoomButton = new JButton("Create Room");
-            JButton readyButton = new JButton("Ready");
-            JButton rockButton = new JButton("Rock");
-            JButton paperButton = new JButton("Paper");
-            JButton scissorsButton = new JButton("Scissors");
-
-            buttonPanel.add(listRoomsButton);
-            buttonPanel.add(createRoomButton);
-            buttonPanel.add(readyButton);
-            buttonPanel.add(rockButton);
-            buttonPanel.add(paperButton);
-            buttonPanel.add(scissorsButton);
-
-            frame.setLayout(new BorderLayout());
-            frame.add(topPanel, BorderLayout.NORTH);
-            frame.add(eventScroll, BorderLayout.CENTER);
-            frame.add(playerScroll, BorderLayout.WEST);
-            frame.add(buttonPanel, BorderLayout.SOUTH);
-            frame.setVisible(true);
-
-            connectBtn.addActionListener(e -> {
-                try {
-                    String host = hostField.getText();
-                    int port = Integer.parseInt(portField.getText());
-                    String name = nameField.getText();
-                    myUser.setClientName(name);
-                    connect(host, port);
-                    sendClientName(name);
-                    gameEventLog.append("Connecting to " + host + ":" + port + " as " + name + "\n");
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
-
-            listRoomsButton.addActionListener(e -> {
-                try {
-                    processClientCommand("/listrooms");
-                } catch (IOException ignored) {}
-            });
-
-            createRoomButton.addActionListener(e -> {
-                try {
-                    String roomName = JOptionPane.showInputDialog(frame, "Enter Room Name:");
-                    if (roomName != null && !roomName.trim().isEmpty()) {
-                        processClientCommand("/createroom " + roomName.trim());
-                    }
-                } catch (IOException ignored) {}
-            });
-
-            readyButton.addActionListener(e -> {
-                try {
-                    processClientCommand("/ready");
-                } catch (IOException ignored) {}
-            });
-
-            ActionListener pickListener = e -> {
-                try {
-                    JButton btn = (JButton) e.getSource();
-                    String pick = btn.getText().toLowerCase();
-                    processClientCommand("/pick " + pick);
-                    rockButton.setEnabled(false);
-                    paperButton.setEnabled(false);
-                    scissorsButton.setEnabled(false);
-                } catch (IOException ignored) {}
-            };
-
-            rockButton.addActionListener(pickListener);
-            paperButton.addActionListener(pickListener);
-            scissorsButton.addActionListener(pickListener);
-        });
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(Client.INSTANCE::startGUI);
     }
 }
