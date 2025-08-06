@@ -1702,3 +1702,47 @@
 > Client Created and Logger configured.
 08/06/2025 11:05:22 [Project.Client.Client] ([32mINFO[0m):
 > Client connected
+08/06/2025 11:10:24 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:10:30 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:11:11 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:11:14 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:17:46 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:17:57 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:25:06 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:25:28 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:25:44 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:27:27 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:27:38 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:27:45 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:28:32 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:29:52 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:30:00 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:33:28 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:34:44 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:34:55 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 11:36:20 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null
+08/06/2025 11:36:33 [Project.Client.Client] ([32mINFO[0m):
+> Client Created and Logger configured.
+08/06/2025 11:36:51 [Project.Client.Client] ([32mINFO[0m):
+> Client connected
+08/06/2025 12:40:39 [Project.Client.Client] ([33mWARNING[0m):
+> Connection dropped: null

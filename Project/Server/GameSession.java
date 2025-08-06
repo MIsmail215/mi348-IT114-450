@@ -1,9 +1,12 @@
+// UCID: Mi348
+// Date: 2025-08-06
 package Project.Server;
 
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import Project.Common.*;
+import Project.Common.TextFX.Color;
 
 public class GameSession {
     private Room room;
@@ -12,14 +15,136 @@ public class GameSession {
     private ScheduledFuture<?> roundTimer;
     private boolean inProgress = false;
     private int round = 0;
+    private static final int TOTAL_ROUNDS = 5;
     private static final int ROUND_TIME_SECONDS = 30;
+
     private boolean extraOptionsEnabled = false;
     private boolean cooldownEnabled = false;
 
     public GameSession(Room room) {
         this.room = room;
     }
+    
+    // vvv THIS IS THE CORRECTED METHOD vvv
+    public synchronized void markReady(ServerThread sender, Payload readyPayload) {
+        if (inProgress || sender.isSpectator()) return;
 
+        // The first non-spectator to ready up is the host and sets the rules
+        if (getGamePlayers().stream().noneMatch(PlayerState::isReady)) {
+            if (readyPayload instanceof ReadyPayload rp) {
+                this.extraOptionsEnabled = rp.areExtraOptionsEnabled();
+                this.cooldownEnabled = rp.isCooldownEnabled();
+                String settings = String.format("Game settings set by host: Extra Options [%b], Cooldown [%b]", extraOptionsEnabled, cooldownEnabled);
+                broadcast(settings);
+            }
+        }
+
+        PlayerState p = players.computeIfAbsent(sender.getClientId(), id -> new PlayerState(sender));
+        
+        // Prevent a 4th player from readying up if 3 are already ready
+        if (getGamePlayers().stream().filter(PlayerState::isReady).count() >= 3 && !p.isReady()) {
+            sender.sendMessage(Constants.DEFAULT_CLIENT_ID, "The game is full with 3 players. Please wait for the next match.");
+            return;
+        }
+
+        p.setReady(true);
+        
+        long readyCount = getGamePlayers().stream().filter(PlayerState::isReady).count();
+        
+        broadcast(sender.getClientName() + " is ready (" + readyCount + "/3)");
+        
+        // Start the game only when there are exactly 3 ready players
+        if (readyCount == 3) {
+            startSession();
+        }
+    }
+    // ^^^ END OF CORRECTION ^^^
+
+    private void evaluateGameStatus() {
+        if (round >= TOTAL_ROUNDS) {
+            broadcast("5 rounds are complete! The game is over!");
+            endSession();
+        } else {
+            startRound();
+        }
+    }
+
+    private void resolveBattles() {
+        List<PlayerState> active = getActivePlayers();
+        if (active.size() < 2) return;
+
+        broadcast("--- Round " + round + " Results ---");
+        
+        for (int i = 0; i < active.size(); i++) {
+            for (int j = i + 1; j < active.size(); j++) {
+                PlayerState p1 = active.get(i);
+                PlayerState p2 = active.get(j);
+                String choice1 = p1.getPick();
+                String choice2 = p2.getPick();
+                int result = compare(choice1, choice2);
+                String battleLog = String.format("%s (%s) vs %s (%s)", p1.getName(), choice1, p2.getName(), choice2);
+
+                if (result == 1) {
+                    p1.addPoint();
+                    syncPoints(p1);
+                    broadcast(battleLog + " -> " + p1.getName() + " wins!");
+                } else if (result == -1) {
+                    p2.addPoint();
+                    syncPoints(p2);
+                    broadcast(battleLog + " -> " + p2.getName() + " wins!");
+                } else {
+                    broadcast(battleLog + " -> Tie!");
+                }
+            }
+        }
+    }
+    
+    private void endSession() {
+        inProgress = false;
+        stopRoundTimer();
+
+        int maxScore = -1;
+        for (PlayerState p : getGamePlayers()) {
+            if (p.getPoints() > maxScore) {
+                maxScore = p.getPoints();
+            }
+        }
+
+        final int finalMaxScore = maxScore;
+        List<String> winners = getGamePlayers().stream()
+                .filter(p -> p.getPoints() == finalMaxScore && finalMaxScore > 0)
+                .map(PlayerState::getName)
+                .collect(Collectors.toList());
+
+        if (winners.size() == 1) {
+            broadcast(winners.get(0) + " is the winner with " + maxScore + " points!");
+        } else if (winners.size() > 1) {
+            broadcast("It's a tie between: " + String.join(", ", winners) + " with " + maxScore + " points!");
+        } else {
+            broadcast("Game over! No one scored any points.");
+        }
+
+        GameResultPayload finalResult = new GameResultPayload();
+        if (!winners.isEmpty()) {
+            finalResult.setWinnerName(String.join(", ", winners));
+        }
+        Map<User, Integer> finalPoints = new HashMap<>();
+        for (PlayerState ps : getGamePlayers()) {
+            finalPoints.put(ps.getUser(), ps.getPoints());
+        }
+        finalResult.setPlayerPoints(finalPoints);
+        room.broadcastPayload(finalResult);
+
+        broadcast("== GAME OVER ==");
+        
+        Payload resetPayload = new Payload();
+        resetPayload.setPayloadType(PayloadType.RESET_GAME_STATE);
+        room.broadcastPayload(resetPayload);
+
+        players.clear();
+    }
+    
+    // --- (The rest of the file is unchanged, but is included for completeness) ---
     public synchronized void toggleAwayStatus(ServerThread sender) {
         if(sender.isSpectator()) return;
         PlayerState p = players.computeIfAbsent(sender.getClientId(), id -> new PlayerState(sender));
@@ -33,19 +158,16 @@ public class GameSession {
         }
         syncPlayerStatus(p);
     }
-    
     private List<PlayerState> getGamePlayers() {
         return players.values().stream()
                 .filter(p -> !p.isSpectator())
                 .collect(Collectors.toList());
     }
-
     private List<PlayerState> getActivePlayers() {
         return getGamePlayers().stream()
                 .filter(p -> !p.isEliminated() && !p.isAway())
                 .collect(Collectors.toList());
     }
-    
     private void startSession() {
         inProgress = true;
         round = 0;
@@ -78,40 +200,15 @@ public class GameSession {
         List<PlayerState> active = getActivePlayers();
         for (PlayerState p : active) {
             if (p.getPick() == null) {
-                p.setEliminated(true);
-                syncPlayerStatus(p);
-                broadcast(p.getName() + " was eliminated for not making a pick.");
+                broadcast(p.getName() + " did not make a pick.");
             }
         }
         resolveBattles();
         evaluateGameStatus();
     }
-    public synchronized void markReady(ServerThread sender, Payload readyPayload) {
-        if (inProgress || sender.isSpectator()) return;
-        
-        if (getGamePlayers().isEmpty() || sender.getClientId() == getGamePlayers().get(0).getId()) {
-            if (readyPayload instanceof ReadyPayload rp) {
-                this.extraOptionsEnabled = rp.areExtraOptionsEnabled();
-                this.cooldownEnabled = rp.isCooldownEnabled();
-                String settings = String.format("Game settings set by host: Extra Options [%b], Cooldown [%b]", extraOptionsEnabled, cooldownEnabled);
-                broadcast(settings);
-            }
-        }
-
-        PlayerState p = players.computeIfAbsent(sender.getClientId(), id -> new PlayerState(sender));
-        p.setReady(true);
-        
-        long readyCount = getGamePlayers().stream().filter(PlayerState::isReady).count();
-        long totalPlayersInGame = getGamePlayers().size();
-
-        broadcast(sender.getClientName() + " is ready (" + readyCount + "/" + totalPlayersInGame + ")");
-        if (readyCount >= 2 && readyCount == totalPlayersInGame) {
-            startSession();
-        }
-    }
     public synchronized void registerPick(ServerThread sender, String rawPick) {
         if (!inProgress) {
-            sender.sendMessage(sender.getClientId(), "Game has not started.");
+            sender.sendMessage(Constants.DEFAULT_CLIENT_ID, "Game has not started.");
             return;
         }
         PlayerState p = players.get(sender.getClientId());
@@ -125,12 +222,12 @@ public class GameSession {
         }
         
         if (!validPicks.contains(pick)) {
-            sender.sendMessage(sender.getClientId(), "Invalid pick for the current game rules.");
+            sender.sendMessage(Constants.DEFAULT_CLIENT_ID, "Invalid pick for the current game rules.");
             return;
         }
 
         if (p.getPick() != null) {
-            sender.sendMessage(sender.getClientId(), "You've already picked for this round.");
+            sender.sendMessage(Constants.DEFAULT_CLIENT_ID, "You've already picked for this round.");
             return;
         }
         p.setPick(pick);
@@ -140,84 +237,6 @@ public class GameSession {
         if (allActivePicked()) {
             endRound();
         }
-    }
-    private void resolveBattles() {
-        List<PlayerState> active = getActivePlayers();
-        if (active.size() < 2) return;
-        Set<String> uniquePicks = active.stream().map(PlayerState::getPick).collect(Collectors.toSet());
-        if (uniquePicks.size() != 2) {
-            broadcast("Round is a draw! No players eliminated.");
-            awardPointsForIndividualWins(active);
-            return;
-        }
-        List<String> picks = new ArrayList<>(uniquePicks);
-        String pickA = picks.get(0);
-        String pickB = picks.get(1);
-        int result = compare(pickA, pickB);
-        String winningPick = (result == 1) ? pickA : pickB;
-        String losingPick = (result == 1) ? pickB : pickA;
-        broadcast(winningPick.substring(0, 1).toUpperCase() + winningPick.substring(1) + " beats " + losingPick + "!");
-        for (PlayerState player : active) {
-            if (player.getPick().equals(winningPick)) {
-                player.addPoint();
-                syncPoints(player);
-                broadcast(player.getName() + " wins the round!");
-            } else {
-                player.setEliminated(true);
-                syncPlayerStatus(player);
-                broadcast(player.getName() + " was eliminated!");
-            }
-        }
-    }
-    private void awardPointsForIndividualWins(List<PlayerState> active) {
-        for (int i = 0; i < active.size(); i++) {
-            for (int j = i + 1; j < active.size(); j++) {
-                PlayerState p1 = active.get(i);
-                PlayerState p2 = active.get(j);
-                int result = compare(p1.getPick(), p2.getPick());
-                if(result == 1) {
-                    p1.addPoint();
-                    syncPoints(p1);
-                    broadcast(p1.getName() + " won a battle against " + p2.getName());
-                } else if(result == -1) {
-                    p2.addPoint();
-                    syncPoints(p2);
-                    broadcast(p2.getName() + " won a battle against " + p1.getName());
-                }
-            }
-        }
-    }
-    private void evaluateGameStatus() {
-        List<PlayerState> active = getActivePlayers();
-        if (active.size() <= 1) {
-            if (active.size() == 1) {
-                broadcast(active.get(0).getName() + " is the winner!");
-            } else {
-                broadcast("Game ended in a draw! No players remain.");
-            }
-            endSession();
-        } else {
-            startRound();
-        }
-    }
-    private void endSession() {
-        inProgress = false;
-        stopRoundTimer();
-        GameResultPayload finalResult = new GameResultPayload();
-        List<PlayerState> sortedPlayers = getGamePlayers().stream()
-            .sorted(Comparator.comparing(PlayerState::getPoints).reversed())
-            .collect(Collectors.toList());
-        if (!sortedPlayers.isEmpty() && getActivePlayers().size() == 1) {
-            finalResult.setWinnerName(getActivePlayers().get(0).getName());
-        }
-        Map<User, Integer> finalPoints = new HashMap<>();
-        for (PlayerState ps : sortedPlayers) {
-            finalPoints.put(ps.getUser(), ps.getPoints());
-        }
-        finalResult.setPlayerPoints(finalPoints);
-        room.broadcastPayload(finalResult);
-        broadcast("== GAME OVER ==");
-        players.values().forEach(p -> p.setReady(false));
     }
     private void syncPlayerStatus(PlayerState player) {
         PlayerStatusPayload psp = new PlayerStatusPayload(player.getId(), player.getStatus());

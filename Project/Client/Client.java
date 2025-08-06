@@ -31,7 +31,7 @@ public enum Client {
     private boolean cooldownEnabled = false;
 
     private Client() {
-        // Constructor is empty
+        // Constructor is empty; logger is configured in start()
     }
     
     public void start() {
@@ -108,9 +108,11 @@ public enum Client {
         if (myUser.isSpectator()) return;
         
         ReadyPayload payload = new ReadyPayload();
+        // The first player in the list is considered the host and can set rules
         if (knownClients.size() <= 1 || knownClients.keySet().iterator().next() == myUser.getClientId()) {
             payload.setExtraOptionsEnabled(ui.getExtraOptionsCheck().isSelected());
-            payload.setCooldownEnabled(ui.getCooldownCheck().isSelected());
+            this.cooldownEnabled = ui.getCooldownCheck().isSelected(); // Update client-side rule
+            payload.setCooldownEnabled(this.cooldownEnabled);
         }
         
         try {
@@ -169,9 +171,7 @@ public enum Client {
                 case ROOM_JOIN:
                 case SYNC_CLIENT:
                     if (p instanceof ConnectionPayload cp) {
-                        if (cp.getClientId() == Constants.DEFAULT_CLIENT_ID || cp.getClientName() == null) {
-                            return;
-                        }
+                        if (cp.getClientId() == Constants.DEFAULT_CLIENT_ID || cp.getClientName() == null) return;
                         User user = knownClients.computeIfAbsent(cp.getClientId(), id -> new User());
                         user.setClientId(cp.getClientId());
                         user.setClientName(cp.getClientName());
@@ -217,14 +217,12 @@ public enum Client {
                     ui.getExtraOptionsCheck().setEnabled(false);
                     ui.getCooldownCheck().setEnabled(false);
                     
-                    // Re-enable all buttons first
                     ui.getRockButton().setEnabled(true);
                     ui.getPaperButton().setEnabled(true);
                     ui.getScissorsButton().setEnabled(true);
                     ui.getLizardButton().setEnabled(true);
                     ui.getSpockButton().setEnabled(true);
 
-                    // Then, if cooldown is on, disable the last picked button
                     if (cooldownEnabled && lastPick != null && !lastPick.isEmpty()) {
                         switch (lastPick) {
                             case "rock": ui.getRockButton().setEnabled(false); break;
@@ -235,32 +233,26 @@ public enum Client {
                         }
                     }
                     break;
-                
-                // vvv THIS IS THE UPDATED LOGIC vvv
                 case RESET_GAME_STATE:
                     ui.getReadyButton().setEnabled(true);
-                    ui.getAwayButton().setSelected(false); // Un-toggle the away button
+                    ui.getAwayButton().setSelected(false);
                     ui.getExtraOptionsCheck().setSelected(false);
                     ui.getExtraOptionsCheck().setEnabled(true);
                     ui.getCooldownCheck().setSelected(false);
                     ui.getCooldownCheck().setEnabled(true);
-                    lastPick = ""; // Reset cooldown
-                    // Re-enable all game buttons
+                    lastPick = "";
                     ui.getRockButton().setEnabled(true);
                     ui.getPaperButton().setEnabled(true);
                     ui.getScissorsButton().setEnabled(true);
                     ui.getLizardButton().setEnabled(true);
                     ui.getSpockButton().setEnabled(true);
                     break;
-                // ^^^ END OF UPDATE ^^^
-
                 case SESSION_END:
                 case GAME_RESULT:
                     if(roundTimer != null) {
                         roundTimer.stop();
                         ui.getTimerLabel().setText("Time Remaining: --");
                     }
-                    // The main reset logic has been moved to RESET_GAME_STATE
                     break;
                 default:
                     break;
@@ -308,18 +300,19 @@ public enum Client {
             logToUI("Spectators can't play!");
             return;
         }
-        if (cooldownEnabled && pick.equals(lastPick)) {
-            logToUI("Cooldown is enabled: Can't pick the same option twice in a row!");
-            return;
-        }
-        
-        // Disable all buttons immediately after picking
+        // Immediately disable all buttons to prevent multiple picks
         ui.getRockButton().setEnabled(false);
         ui.getPaperButton().setEnabled(false);
         ui.getScissorsButton().setEnabled(false);
         ui.getLizardButton().setEnabled(false);
         ui.getSpockButton().setEnabled(false);
         
+        // Check cooldown after disabling buttons
+        if (cooldownEnabled && pick.equals(lastPick)) {
+            logToUI("Cooldown is enabled: Can't pick the same option twice in a row!");
+            return; // We don't need to send this pick
+        }
+
         lastPick = pick;
         logToUI("Picked " + pick.toUpperCase());
         sendCommand("/pick " + pick);
